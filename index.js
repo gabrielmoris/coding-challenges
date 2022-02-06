@@ -33,17 +33,18 @@ const wordCount = (input) => {
     let count = 0;
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr.length; j++) {
-            console.log("POR I",arr[i],"POS J", arr[j])
             if (arr[i] === arr[j]) {
                 count++;
-            } else if (arr[i] === arr[arr.length - 1]) {
-                arr2.push(arr[i]+"="+count);
+            }
+
+            if (j === arr.length - 1) {
+                arr2.push(arr[i] + "=" + count);
                 count = 0;
             }
         }
     }
     for (j = 0; j < arr.length; j++) {
-        solution += arr2[j];
+        solution += arr2[j] + "\n";
     }
 
     console.log(solution);
