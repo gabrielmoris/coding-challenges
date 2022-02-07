@@ -29,10 +29,14 @@ let input = "Hola, esta esta frase frase es de de de pruebaaaa Hola";
 const wordCount = (sentence) => {
    let lower = sentence.toLowerCase();
    let arr = lower.split(/[\t, \n, " ", :,!,.]+/);
-   arr.forEach((prop) => {
-       prop.replace(/^"(.*)"$/, "$1");
-       console.log(arr);
-   });
+   for (let n = 0; n < arr.length; n++) {
+       if (arr[n].charAt(0) === "'") {
+           console.log(arr[n]);
+           arr[n] = arr[n].slice(1, arr[n].length - 1);
+           console.log(arr);
+       }
+   }
+
    let obj = {};
    let count = 0;
    for (let i = 0; i < arr.length; i++) {
@@ -43,7 +47,7 @@ const wordCount = (sentence) => {
 
            if (j === arr.length - 1) {
                if (arr[i] != "&@$%^&" && arr[i] != "") {
-                   let prop = arr[i].toString();
+                   let prop = arr[i];
                    obj[prop] = count;
                }
                count = 0;
