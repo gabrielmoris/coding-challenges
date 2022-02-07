@@ -26,45 +26,33 @@
 
 // Word Count=======================================================
 let input = "Hola, esta esta frase frase es de de de pruebaaaa Hola";
-const wordCount = (input) => {
-    let arr = input.split(/[ ,\n]+/);
-    let solution = "";
-    let arr2 = [];
-    let count = 0;
-    let count2=0;
-    for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++) {
-            if (arr[i] === arr[j]) {
-                count++;
-            }
+const wordCount = (sentence) => {
+   let lower = sentence.toLowerCase();
+   let arr = lower.split(/[\t, \n, " ", :,!,.]+/);
+   arr.forEach((prop) => {
+       prop.replace(/^"(.*)"$/, "$1");
+       console.log(arr);
+   });
+   let obj = {};
+   let count = 0;
+   for (let i = 0; i < arr.length; i++) {
+       for (let j = 0; j < arr.length; j++) {
+           if (arr[i] === arr[j]) {
+               count++;
+           }
 
-            if (j === arr.length - 1) {
-                arr2.push(arr[i] + "=" + count);
-                count = 0;
-            }
-        }
-    }
+           if (j === arr.length - 1) {
+               if (arr[i] != "&@$%^&" && arr[i] != "") {
+                   let prop = arr[i].toString();
+                   obj[prop] = count;
+               }
+               count = 0;
+           }
+       }
+   }
+   console.log(JSON.stringify(obj, null, 4));
 
-    for(let k=0; k<arr2.length; k++){
-        for(let l=0; l<arr2.length;l++){
-            if(arr2[k]===arr2[l]){
-                count2++
-            }
-            if(l===arr2.length-1){
-                console.log("K=",arr2[k],"L=",arr2[l],"COUNTS=",count2)
-
-                
-                count2=0;
-
-            }
-        }
-    }
-
-    for (let j = 0; j < arr2.length; j++) {
-        solution += arr2[j] + "\n";
-    }
-
-    console.log(solution);
+   return obj;
 };
 
 wordCount(input);
