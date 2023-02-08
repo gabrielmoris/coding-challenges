@@ -3,7 +3,7 @@ import read from "./utils/readFile";
 import readline from "readline";
 import util from "util";
 
-export type SolutionFunction = (input: string[]) => string | number;
+export type SolutionFunction = (input: string[], input2?: any) => any;
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -40,23 +40,44 @@ async function execute() {
   const input = read("../challenges/" + challenge + "/input.txt");
   const inputArray = input.split("\n");
 
-  Object.keys(mod).forEach((key, index) => {
-    if (typeof mod[key] === "function") {
-      const fn = mod[key] as SolutionFunction;
-      const start = performance.now();
-      const solution = fn(inputArray);
-      const end = performance.now();
-      console.log(
-        `${index + 1}. Challenge ${challenge} - ${fn.name}: `,
-        solution
-      );
-      console.log(
-        `${index + 1}. Execution took ${(end - start).toPrecision(
-          4
-        )} milliseconds.`
-      );
-    }
-  });
+  try {
+    const input2 = read("../challenges/" + challenge + "/input2.txt");
+    const input2Array = input2.split("\n");
+    Object.keys(mod).forEach((key, index) => {
+      if (typeof mod[key] === "function") {
+        const fn = mod[key] as SolutionFunction;
+        const start = performance.now();
+        const solution = fn(inputArray, input2Array);
+        const end = performance.now();
+        console.log(
+          `${index + 1}. Challenge ${challenge} - ${fn.name}: `,
+          solution
+        );
+        console.log(
+          `${index + 1}. Execution took ${(end - start).toPrecision(
+            4
+          )} milliseconds.`
+        );
+      }
+    });
+  } catch {
+    Object.keys(mod).forEach((key, index) => {
+      if (typeof mod[key] === "function") {
+        const fn = mod[key] as SolutionFunction;
+        const start = performance.now();
+        const solution = fn(inputArray);
+        const end = performance.now();
+        console.log(
+          `${index + 1}. Challenge ${challenge} - ${fn.name}: `,
+          solution
+        );
+        console.log(
+          `${index + 1}. Execution took ${(end - start).toPrecision(
+            4
+          )} milliseconds.`
+        );
+      }
+    });
+  }
 }
-
 execute();
