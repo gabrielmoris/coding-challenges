@@ -1,7 +1,6 @@
 import { SolutionFunction } from "../..";
 
-// return index of arrays which sum are The target
-export const solutionFn: SolutionFunction = (inputArray, target) => {
+export const solutionFn: SolutionFunction = (arrOfStr, target) => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -11,20 +10,45 @@ export const solutionFn: SolutionFunction = (inputArray, target) => {
     "\x1b[0m"
   );
 
-  const map: { [key: string]: number } = {};
+  const nums = arrOfStr.map(toNumber);
 
-  for (let i = 0; i < inputArray.length; i++) {
-    const sum = Number(target[0]);
+  for (let i = 0; i < nums.length; i++) {
+    const sum = Number(target);
+    const currentVal = nums[i];
+    const complementary = nums[i] - sum;
+    const complementaryRev = sum - nums[i];
 
     if (
-      inputArray.indexOf(inputArray[i]) !== -1 &&
-      inputArray.indexOf((Number(inputArray[i]) - sum).toString()) !== -1
+      nums.indexOf(currentVal) < 0 &&
+      nums.indexOf(currentVal) !== -1 &&
+      nums.indexOf(complementary) !== -1 &&
+      nums.indexOf(currentVal) != nums.indexOf(complementary)
     )
-      return [
-        inputArray.indexOf(inputArray[i]),
-        inputArray.indexOf((Number(inputArray[i]) - sum).toString()),
-      ];
+      return [nums.indexOf(currentVal), nums.indexOf(complementary)];
+    if (
+      nums.indexOf(currentVal) > 0 &&
+      nums.indexOf(currentVal) !== -1 &&
+      nums.indexOf(complementaryRev) !== -1 &&
+      nums.indexOf(currentVal) != nums.indexOf(complementaryRev)
+    )
+      return [nums.indexOf(currentVal), nums.indexOf(complementaryRev)];
   }
 
+  if (nums.indexOf(target / 2) != -1) {
+    const arrOfRes = indexOfAll(nums, target / 2);
+    return [arrOfRes[0], arrOfRes[1]];
+  }
   return "No solution";
 };
+
+const indexOfAll = (arr: number[], val: number): number[] => {
+  const result: number[] = [];
+  arr.forEach((num, index) => {
+    num === val ? result.push(index) : null;
+  });
+  return result;
+};
+
+function toNumber(value: string) {
+  return Number(value);
+}
