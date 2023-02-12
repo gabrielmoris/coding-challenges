@@ -1,6 +1,6 @@
 import { SolutionFunction } from "../..";
 
-export const biggestSubarr: SolutionFunction = (arrOfStr) => {
+export const biggestSubarr: SolutionFunction = (arrOfStr): number => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -13,15 +13,15 @@ export const biggestSubarr: SolutionFunction = (arrOfStr) => {
 
   let maxSum = nums[0];
 
-  // nums[i] represents the largest sum of all subarrays ending with index i...
-  // then its value should be the larger one between nums[i]...
-  // nums[i-1] + nums[i] (largest sum plus current number with using prefix)...
-  // calculate nums[0], nums[1]…, nums[n] while comparing each one with current largest sum...
+  for (let i = 1; i < nums.length; i++) {
+    //if the former number is bigger than 0 it is added
+    nums[i] = Math.max(0, nums[i - 1]) + nums[i];
 
-  ///////////////////
-  // if nums[i] > maxSum then maxSum = nums[i]...
+    // if the current number is bigger than the sum the max sum will be that number
+    if (nums[i] > maxSum) maxSum = nums[i];
+  }
 
-  return "finish it";
+  return maxSum;
 };
 
 function toNumber(value: string) {
