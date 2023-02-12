@@ -1,5 +1,10 @@
 import { SolutionFunction } from "../..";
 
+// This code is an implementation of the divide and conquer
+// approach to finding the subarray with the largest sum in an array of integers.
+// It iterates through the array, adding the current number to the previous number
+// if it is bigger than 0, and updating the maxSum if the current number is bigger than the sum. Finally, it returns the maxSum.
+
 export const biggestSubarr: SolutionFunction = (arrOfStr): number => {
   console.log(
     "\x1b[44m",
