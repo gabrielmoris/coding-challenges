@@ -14,26 +14,19 @@ export const solutionFn: SolutionFunction = (arrOfStr, target) => {
 
   for (let i = 0; i < nums.length; i++) {
     const sum = Number(target);
+    // I save in a Variable the current number I check in the array and his complementary to reach the target
     const currentVal = nums[i];
-    const complementary = nums[i] - sum;
-    const complementaryRev = sum - nums[i];
+    const complementary = sum - nums[i];
 
+    //I check if the complementary value is in the array and if the index of the current value is not the same as the complementary (to dont use the same number)
     if (
-      nums.indexOf(currentVal) < 0 &&
-      nums.indexOf(currentVal) !== -1 &&
       nums.indexOf(complementary) !== -1 &&
       nums.indexOf(currentVal) != nums.indexOf(complementary)
     )
       return [nums.indexOf(currentVal), nums.indexOf(complementary)];
-    if (
-      nums.indexOf(currentVal) > 0 &&
-      nums.indexOf(currentVal) !== -1 &&
-      nums.indexOf(complementaryRev) !== -1 &&
-      nums.indexOf(currentVal) != nums.indexOf(complementaryRev)
-    )
-      return [nums.indexOf(currentVal), nums.indexOf(complementaryRev)];
   }
 
+  //In case the target is the double of 2 complementaries, I check the first 2 numbers
   if (nums.indexOf(target / 2) != -1) {
     const arrOfRes = indexOfAll(nums, target / 2);
     return [arrOfRes[0], arrOfRes[1]];
