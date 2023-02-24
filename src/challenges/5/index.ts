@@ -1,6 +1,5 @@
-import { TIMEOUT } from "dns";
 import { SolutionFunction } from "../..";
-export const containsDuplicate: SolutionFunction = (arrOfStr, steps): any => {
+export const containsDuplicate: SolutionFunction = (arr, steps): any => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -9,7 +8,7 @@ export const containsDuplicate: SolutionFunction = (arrOfStr, steps): any => {
     "It must be the argument modifyed and not send a new variable",
     "\x1b[0m"
   );
-  const nums = arrOfStr.map(toNumber);
+  const nums = arr.map(toNumber);
   let k = Number(steps[0]);
 
   if (k <= 0) {
