@@ -26,7 +26,7 @@ export const fizzbuzz: SolutionFunction = (
   } else {
     for (let i = 1; i <= number; i++) {
       i % 3 === 0 && i % 5 === 0
-        ? response.push("Fizzbuzz")
+        ? response.push("FizzBuzz")
         : i % 5 === 0
         ? response.push("Buzz")
         : i % 3 === 0
