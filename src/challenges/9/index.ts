@@ -1,0 +1,21 @@
+import { SolutionFunction } from "../..";
+export const singleNumber: SolutionFunction = (
+  arrOfNumber: string[]
+): number[] | number => {
+  console.log(
+    "\x1b[44m",
+    "\x1b[33m",
+    "Given a non-empty array of integers nums, every element appears twice except for one. Find that single one.",
+    "\n",
+    "You must implement a solution with a linear runtime complexity and use only constant extra space.",
+    "\x1b[0m"
+  );
+  // const nums = arrOfNumber.map(toNumber);
+  console.log(arrOfNumber);
+
+  return 1;
+};
+
+function toNumber(value: string) {
+  return Number(value);
+}
