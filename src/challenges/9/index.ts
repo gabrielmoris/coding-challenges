@@ -1,7 +1,7 @@
 import { SolutionFunction } from "../..";
 export const singleNumber: SolutionFunction = (
   arrOfNumber: string[]
-): number[] | number => {
+): number => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -10,12 +10,16 @@ export const singleNumber: SolutionFunction = (
     "You must implement a solution with a linear runtime complexity and use only constant extra space.",
     "\x1b[0m"
   );
-  // const nums = arrOfNumber.map(toNumber);
-  console.log(arrOfNumber);
 
-  return 1;
+  const result = new Map();
+  arrOfNumber.forEach((number) => {
+    if (result.has(number)) {
+      result.delete(number);
+    } else {
+      result.set(number, "ok");
+    }
+  });
+  const number = [...result.keys()];
+
+  return Number(number[0]);
 };
-
-function toNumber(value: string) {
-  return Number(value);
-}
