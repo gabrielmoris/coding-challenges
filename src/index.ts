@@ -35,19 +35,23 @@ async function execute() {
   const challenge = await getChallenge();
 
   if (!challenge) return;
+  let mainInput: any;
   const mod = await import("./challenges/" + challenge + "/index.ts");
-
-  const input = read("../challenges/" + challenge + "/input.txt");
-  const inputArray = input.split("\n");
+  try {
+    const input = read("../challenges/" + challenge + "/input.txt");
+    mainInput = input.split("\n");
+  } catch {
+    mainInput = read("../challenges/" + challenge + "/input.json");
+  }
 
   try {
     const input2 = read("../challenges/" + challenge + "/input2.txt");
-    const input2Array = input2.split("\n");
+    const secondaryInput = input2.split("\n");
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
         const fn = mod[key] as SolutionFunction;
         const start = performance.now();
-        const solution = fn(inputArray, input2Array);
+        const solution = fn(mainInput, secondaryInput);
         const end = performance.now();
         console.log(
           `${index + 1}. Challenge ${challenge} - ${fn.name}: `,
@@ -65,7 +69,7 @@ async function execute() {
       if (typeof mod[key] === "function") {
         const fn = mod[key] as SolutionFunction;
         const start = performance.now();
-        const solution = fn(inputArray);
+        const solution = fn(mainInput);
         const end = performance.now();
         console.log(
           `${index + 1}. Challenge ${challenge} - ${fn.name}: `,
