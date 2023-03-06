@@ -12,12 +12,15 @@ export const zerosToEnd: SolutionFunction = (arrOfStr): any => {
 
   let left = 0;
   for (let i = 0; i < nums.length; i++) {
+    console.log("left:", left, "i:", i);
+    console.log("NUMBERSOFARR:", nums[left], nums[i]);
     if (nums[i] !== 0) {
-      console.log(i, nums);
+      console.log("BEFORE", i, nums);
       // 1 [ 0, 1, 0, 3, 12 ] the nums[0] is changed by nums[1]
       // 3 [ 1, 0, 0, 3, 12 ] the nums[1] is changed for nums[3]
       // 4 [ 1, 3, 0, 0, 12 ] the nums[2] is changed for nums[4]
       [nums[i], nums[left]] = [nums[left], nums[i]];
+      console.log("AFTER", i, nums);
       left++;
     }
   }
