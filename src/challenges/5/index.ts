@@ -1,5 +1,5 @@
 import { SolutionFunction } from "../..";
-export const containsDuplicate: SolutionFunction = (arr, steps): any => {
+export const rotateNums: SolutionFunction = (arr, steps): any => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
