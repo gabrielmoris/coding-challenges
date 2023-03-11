@@ -24,6 +24,7 @@ export const titleToNumber: SolutionFunction = (input: string[]): number => {
   if (columnTitle.length < 1) {
     return 0;
   }
+
   if (columnTitle.length === 1) {
     const lastCharVal = columnTitle.charCodeAt(columnTitle.length - 1) - 64;
     return lastCharVal;
@@ -33,6 +34,7 @@ export const titleToNumber: SolutionFunction = (input: string[]): number => {
       colSum = 26 * colSum + columnTitle[i].charCodeAt(0) - 64;
       console.log(columnTitle[i], colSum);
     }
+
     return colSum;
   }
 };
