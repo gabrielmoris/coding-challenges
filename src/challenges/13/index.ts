@@ -38,5 +38,6 @@ export const titleToNumber: SolutionFunction = (input: string[]): number => {
     return colSum;
   }
 };
+
 // ZZ is 702, so AAA should be 703
 //expected output from FXSHRXW is 2147483647
