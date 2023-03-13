@@ -31,7 +31,7 @@ export const titleToNumber: SolutionFunction = (input: string[]): number => {
   } else {
     let colSum = 0;
     for (let i = 0; i < columnTitle.length; i++) {
-      colSum = 26 * colSum + columnTitle[i].charCodeAt(0) - 64;
+      colSum = 26 * colSum + columnTitle.charCodeAt(i) - 64;
       console.log(columnTitle[i], colSum);
     }
 
