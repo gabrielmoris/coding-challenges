@@ -1,4 +1,3 @@
-import { exitCode } from "process";
 import { SolutionFunction } from "../..";
 
 console.log(
