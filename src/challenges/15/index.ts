@@ -40,7 +40,7 @@ export const romanToInt: SolutionFunction = (input: string[]): any => {
   let sum = 0;
 
   for (let i = 0; i < str.length; i++) {
-    //Si i es menod que el tamaño del String y la cifra string1 es menor que la string 2 = le resto a sum cifra[i]
+    //Si i es menor que el tamaño del String y la cifra string1 es menor que la string2 = le resto a sum cifra[i]
     if (i + 1 < str.length && cifra[str[i]] < cifra[str[i + 1]]) {
       sum -= cifra[str[i]];
     } else {
