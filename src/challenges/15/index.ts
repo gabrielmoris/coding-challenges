@@ -25,44 +25,28 @@ console.log(
 );
 
 export const romanToInt: SolutionFunction = (input: string[]): any => {
-  let nums: number[] = [];
-  input[0].split("").forEach((item) => {
-    switch (item) {
-      case "I":
-        nums.push(1);
-        break;
-      case "V":
-        nums.push(5);
-        break;
-      case "X":
-        nums.push(10);
-        break;
-      case "L":
-        nums.push(50);
-        break;
-      case "C":
-        nums.push(100);
-        break;
-      case "D":
-        nums.push(500);
-        break;
-      case "M":
-        nums.push(1000);
-        break;
-    }
-  });
+  const str = input[0];
+  // Interface of an object to compare
+  const cifra: { [key: string]: number } = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+  };
 
-  // ADD CASSES LIKE III OR VII (in else)
-  let result = 0;
-  for (let i = 0; i < nums.length; i++) {
-    console.log(i, "   ", result);
-    if (nums[i] > nums[i + 1]) {
-      result += nums[i];
+  let sum = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    //Si i es menod que el tamaño del String y la cifra string1 es menor que la string 2 = le resto a sum cifra[i]
+    if (i + 1 < str.length && cifra[str[i]] < cifra[str[i + 1]]) {
+      sum -= cifra[str[i]];
     } else {
-      const rest = nums[i + 1] - nums[i];
-      result += rest;
-      i++;
+      sum += cifra[str[i]];
     }
   }
-  return result;
+
+  return sum;
 };
