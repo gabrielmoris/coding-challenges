@@ -43,10 +43,14 @@ async function execute() {
   } catch {
     mainInput = read("../challenges/" + challenge + "/input.json");
   }
-
+  let secondaryInput: any;
   try {
-    const input2 = read("../challenges/" + challenge + "/input2.txt");
-    const secondaryInput = input2.split("\n");
+    try {
+      const input2 = read("../challenges/" + challenge + "/input2.txt");
+      secondaryInput = input2.split("\n");
+    } catch {
+      secondaryInput = read("../challenges/" + challenge + "/input2.json");
+    }
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
         const fn = mod[key] as SolutionFunction;
