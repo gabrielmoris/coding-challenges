@@ -8,16 +8,14 @@ console.log(
 );
 // Funciona, pero debería buscar hacerlo en O1. Es posible?
 export const firstUniqChar: SolutionFunction = (str: string[]): any => {
-  const s = str[0].split("");
-  let result = -1;
-  const sCheck = s;
-  s.forEach((char: string, i: any) => {
-    console.log(sCheck, char, !sCheck.includes(char), i);
-    if (!sCheck.includes(char)) {
-      result = i;
-      break;
-    }
-    sCheck.shift();
-  });
-  return result;
+  const s: string = str[0];
+  const charsMapper: { [key: string]: number } = {};
+  for (const c of [...s]) {
+    charsMapper[c] = charsMapper[c] ? charsMapper[c] + 1 : 1;
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    if (charsMapper[s[i]] === 1) return i;
+  }
+  return -1;
 };
