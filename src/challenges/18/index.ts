@@ -6,7 +6,7 @@ console.log(
   `Given a string s, find the first non-repeating character in it and return its index. If it does not exist, return -1`,
   "\x1b[0m"
 );
-// Funciona, pero debería buscar hacerlo en O1. Es posible?
+
 export const firstUniqChar: SolutionFunction = (str: string[]): any => {
   const s: string = str[0];
   const charsMapper: { [key: string]: number } = {};
