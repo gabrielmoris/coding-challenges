@@ -8,58 +8,28 @@ console.log(
   "\x1b[0m"
 );
 
-export const sortedArrayToBST: SolutionFunction = (
-  numsInput: string[]
-): any => {
-  const nums = numsInput.map((num) => Number(num));
-  const tree = new BinaryTree();
-  nums.forEach((num) => {
-    tree.insert(num);
-  });
-  console.log(JSON.stringify(tree));
-  return tree;
+//More performant, recursive function
+export const sortedArrayToBST: SolutionFunction = (nums: any[]): any => {
+  if (nums.length === 0) return null;
+
+  if (nums.length === 1) return new TreeNode(nums[0]);
+
+  const i = Math.floor(nums.length / 2);
+
+  return new TreeNode(
+    nums[i],
+    sortedArrayToBST(nums.slice(0, i)),
+    sortedArrayToBST(nums.slice(i + 1, nums.length))
+  );
 };
 
-class Node {
+class TreeNode {
   left: any;
   right: any;
   val: number;
-  constructor(val: number) {
-    this.left = null;
-    this.right = null;
+  constructor(val: number, left?: any, right?: any) {
+    this.left = left || null;
+    this.right = right || null;
     this.val = val;
-  }
-}
-
-class BinaryTree {
-  root: any;
-  constructor() {
-    this.root = null;
-  }
-  insert(val: number) {
-    const node = new Node(val);
-    if (this.root === null) {
-      this.root = node;
-    } else {
-      let nodePos = this.root;
-      while (nodePos !== null) {
-        if (val < nodePos.val) {
-          //Here check then right
-          if (!nodePos.left) {
-            nodePos.left = node;
-            return this;
-          }
-          nodePos = nodePos.left;
-        }
-        if (val > nodePos.val) {
-          //Here check then right
-          if (!nodePos.right) {
-            nodePos.right = node;
-            return this;
-          }
-          nodePos = nodePos.right;
-        }
-      }
-    }
   }
 }
