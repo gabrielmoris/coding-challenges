@@ -10,29 +10,22 @@ console.log(
 //More performant, recursive function
 export const missingNumber: SolutionFunction = (numsArr: any[]): any => {
   const nums = numsArr.map((str) => Number(str));
-  nums.sort();
-  if (nums.length < 2) {
-    //check what happens when the number is [0,1] or [1,2]...etc
-    //This part would work
-    //     if (nums[0] === 0) {
-    //       return 1;
-    //     } else {
-    //       return 0;
-    //     }
-    //   }
-    //this starts to be more complex, check it
-    //   if (nums.length === 2) {
-    //     if
-    //     if (nums[1] === 2) {
-    //       return 1;
-    //     }
-    //     if (nums[1] === 1) {
-    //       return 2;
-    //     }
+  // Remember that the numbers are not really sorted!
+  nums.sort(function (a, b) {
+    return a - b;
+  });
+  if (nums.length === 1) {
+    return nums[0] === 0 ? 1 : 0;
   }
+  //check what happens when the number is [0,1] or [1,2]...etc
+
   const resArr = nums.filter((num, i) => {
     return num != i;
   });
+
+  if (!resArr.length) {
+    return nums.length;
+  }
 
   if (!Number.isNaN(resArr[0] - 1)) {
     return resArr[0] - 1;
