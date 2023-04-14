@@ -17,7 +17,6 @@ export const missingNumber: SolutionFunction = (numsArr: any[]): any => {
   if (nums.length === 1) {
     return nums[0] === 0 ? 1 : 0;
   }
-  //check what happens when the number is [0,1] or [1,2]...etc
 
   const resArr = nums.filter((num, i) => {
     return num != i;
