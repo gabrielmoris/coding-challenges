@@ -14,13 +14,16 @@ console.log(
 //More performant, recursive function
 export const missingNumber: SolutionFunction = (nums1: any[]): any => {
   const prices = nums1.map((item) => Number(item));
-  // maybe buy and put an array with index and minor price and check each time!!??
-  let buy = 0;
-  let sell = 0;
-  prices.forEach((price, index) => {
-    if (buy === 0 || buy > price) {
-      buy = price;
-    }
-    console.log(buy, index);
-  });
+
+  let min = prices[0];
+  let max = 0;
+
+  for (let current of prices) {
+    // Each iteration It saves the slowest number and chooses between the current max
+    // or the number of iteration minus the minimum number. At the end i return the max (the rest of min + the highest number)
+    min = Math.min(min, current);
+    max = Math.max(max, current - min);
+  }
+
+  return max;
 };
