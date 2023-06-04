@@ -25,9 +25,11 @@ Explanation:
 
 export const isHappy: SolutionFunction = (arg: any) => {
   let n = typeof arg === "object" ? arg[0] : arg;
-  // This works but It is supossed that n is always a Number. Chack it
+
   try {
-    while (n.length > 1) {
+    while (n.length > 1 || Number(n) > 4) {
+      console.log(Number(n));
+
       const arrOfDigits = n
         .split("")
         .map((i: string) => Math.pow(Number(i), 2))
