@@ -16,7 +16,7 @@ Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
 export const generate: SolutionFunction = (arg: string[]): number[][] => {
   const numRows = Number(arg[0]);
   let i = 0;
-  const arrSol = [];
+  const arrSol: number[][] = [];
 
   while (numRows > i) {
     if (i === 0) {
@@ -24,7 +24,19 @@ export const generate: SolutionFunction = (arg: string[]): number[][] => {
     } else if (i === 1) {
       arrSol.push([1, 1]);
     } else {
-      // here i add as each number the numRows[i-1](1,2,1) added to the next one in the numRows[i](1 ,(1+2),(1+2),1) and the 1 i the corners
+      if (arrSol[i - 1]) {
+        const currArr = [];
+        for (let y = 0; y < arrSol[i - 1].length; y++) {
+          if (y === 0 || y === arrSol[i - 1].length - 1) {
+            currArr.push(1);
+          }
+          if (arrSol[i - 1][y + 1]) {
+            currArr.push(arrSol[i - 1][y] + arrSol[i - 1][y + 1]);
+          }
+        }
+
+        arrSol[i] = currArr;
+      }
     }
 
     i++;
@@ -32,3 +44,33 @@ export const generate: SolutionFunction = (arg: string[]): number[][] => {
 
   return arrSol;
 };
+
+// Other Option
+
+// export const generate: SolutionFunction = (arg: string[]): number[][] => {
+//   const numRows = Number(arg[0]);
+//   let result: number[][] = Array.from(Array(numRows), () => []);
+//   let p1 = 0,
+//     p2 = 0;
+//   let i = 0;
+
+//   result[0][0] = 1;
+
+//   while (i < numRows - 1) {
+//     if (p1 === p2) {
+//       result[i + 1].push(result[i][p1]);
+//       p2++;
+//     } else if (!result[i][p2]) {
+//       result[i + 1].push(result[i][p1]);
+//       i++;
+//       p2 = 0;
+//       p1 = 0;
+//     } else {
+//       result[i + 1].push(result[i][p1] + result[i][p2]);
+//       p2++;
+//       p1++;
+//     }
+//   }
+
+//   return result;
+// };
