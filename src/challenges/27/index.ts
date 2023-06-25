@@ -25,19 +25,20 @@ class TreeNode {
 }
 
 export const isSymmetric: SolutionFunction = (arg: any): boolean => {
-  let root;
-  const str1 = "";
-  const srtr2 = "";
+  let root = JSON.parse(arg);
+  //I start with an array with the right and left part of the three
+  const stack = [[root.left, root.right]];
 
-  try {
-    root = JSON.parse(arg);
-  } catch {
-    root = arg;
+  while (stack.length > 0) {
+    // I extract into 2 variables, right and left and first I compare, if they are not the same the three is not symetric
+    const [left, right]: any = stack.pop();
+    if (left?.val != right?.val) return false;
+
+    //If it is symetric I go on and I push in the stack all the subthrees (max 4) and I go on with the comparation until there is no more items in the stack.
+    (left?.left || right?.right) && stack.push([left.left, right.right]);
+    (left?.right || right?.left) && stack.push([left.right, right.left]);
+    console.log(stack.length, stack);
   }
 
-  //I Iterate thwough the node and save in string the numbers, then I compare
-
-  while (root !== null) {}
-
-  return false;
+  return true;
 };
