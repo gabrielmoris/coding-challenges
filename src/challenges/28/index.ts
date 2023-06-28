@@ -16,10 +16,12 @@ Explanation: The subarray [4,-1,2,1] has the largest sum 6.
 
 export const maxSubArray: SolutionFunction = (arg: any) => {
   const nums: number[] = arg.map((string: string) => Number(string));
-  console.log(nums);
-  const solution = nums.reduce((total, num): any => {
-    console.log("Total", total, "NUM: ", num);
-    return total + num;
-  });
-  return solution;
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i - 1] >= 0) {
+      nums[i] += nums[i - 1];
+    }
+  }
+
+  return nums.sort((a, b) => b - a)[0];
 };
