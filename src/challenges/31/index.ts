@@ -21,19 +21,19 @@ Total amount you can rob = 1 + 3 = 4.
 export const rob: any = (arg: any) => {
   const n = arg.map((string: string) => Number(string));
 
-  let result = 0;
-  let jumped = false;
+  let include = 0;
+  let exclude = 0;
 
-  for (let i = 0; i < n.length; i += 1) {
-    // console.log(i);
-    // if (n[i + 1] > n[i] && !jumped) {
-    //   i++;
-    //   jumped = true;
-    // } else {
-    //   result = result + n[i];
-    //   i++;
-    //   jumped = false;
-    // }
+  // In each loop i have a temporal var that is the include
+  // then I check what is higher the include or the exclude (include of the last loop)
+  // afterwards I save the include of the beginning (saved in temp) into exclude
+  // I return the highest at the end of the loop
+
+  for (let i = 0; i < n.length; i++) {
+    console.log(i + ": ", include, exclude);
+    const temp = include;
+    include = Math.max(include, exclude + n[i]);
+    exclude = temp;
   }
-  return result;
+  return Math.max(include, exclude);
 };
