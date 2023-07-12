@@ -28,14 +28,22 @@ countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
 `,
   "\x1b[0m"
 );
-let stringToReturn = "1";
-export const countAndSay = (arr: string[]) => {
-  let number = Number(arr[0]);
 
-  if (number === 1) {
-    return stringToReturn;
+export const countAndSay = (arr: string[]) => {
+  let n = Number(arr[0]);
+  let stringToReturn = "1";
+  for (let i = n; i > 1; i--) {
+    let current = "";
+    let count = 1;
+    for (let j = 0; j < stringToReturn.length; j++) {
+      if (stringToReturn[j] === stringToReturn[j + 1]) {
+        count++;
+      } else {
+        current += count + stringToReturn[j];
+        count = 1;
+      }
+    }
+    stringToReturn = current;
   }
-  for (let i = 0; i < number; i++) {
-    console.log(number);
-  }
+  return stringToReturn;
 };
