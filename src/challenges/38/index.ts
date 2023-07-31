@@ -21,15 +21,11 @@ export const isPalindrome = (json: any) => {
     head = head.next;
   }
 
-  if (arr.length % 2 === 0) {
-    const arr1 = arr.slice(0, arr.length / 2);
-    const arr2 = arr.slice(arr.length / 2, arr.length);
-    const res = JSON.stringify(arr1) === JSON.stringify(arr2.reverse());
-    return res;
-  } else {
-    const arr1 = arr.slice(0, arr.length / 2);
-    const arr2 = arr.slice(arr.length / 2 + 1, arr.length);
-    const res = JSON.stringify(arr1) === JSON.stringify(arr2.reverse());
-    return res;
-  }
+  const arr1 = arr.slice(0, arr.length / 2);
+  const arr2 =
+    arr.length % 2 === 0
+      ? arr.slice(arr.length / 2, arr.length)
+      : arr.slice(arr.length / 2 + 1, arr.length);
+  const res = JSON.stringify(arr1) === JSON.stringify(arr2.reverse());
+  return res;
 };
