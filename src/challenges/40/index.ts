@@ -55,7 +55,10 @@ class MinStack {
     }
   }
 
-  pop(): void {}
+  pop(): void {
+    delete this.stack[this.length - 1];
+    this.length--;
+  }
 
   top(): number {
     return this.stack[this.length - 1];
@@ -72,7 +75,7 @@ export const minStack = () => {
   minStack.push(0);
   minStack.push(-3);
   minStack.getMin(); // return -3
-  //   minStack.pop();
+  minStack.pop();
   minStack.top(); // return 0
   minStack.getMin(); // return -2
 };
