@@ -56,16 +56,26 @@ class MinStack {
   }
 
   pop(): void {
-    delete this.stack[this.length - 1];
-    this.length--;
+    if (this.stack[this.length - 1]) {
+      delete this.stack[this.length - 1];
+      this.length--;
+    }
   }
 
-  top(): number {
-    return this.stack[this.length - 1];
+  top(): number | null {
+    return this.stack[this.length - 1] ? this.stack[this.length - 1] : null;
   }
 
-  getMin(): number {
-    return Object.values(this.stack).sort((a, b) => a - b)[0];
+  getMin(): number | null {
+    if (Object.values(this.stack)) {
+      return Object.values(this.stack).sort((a, b) => a - b)[0];
+    } else {
+      return null;
+    }
+  }
+
+  getStack() {
+    return Object.values(this.stack);
   }
 }
 
@@ -75,7 +85,9 @@ export const minStack = () => {
   minStack.push(0);
   minStack.push(-3);
   minStack.getMin(); // return -3
+  console.log(minStack.getStack());
   minStack.pop();
+  console.log(minStack.getStack());
   minStack.top(); // return 0
   minStack.getMin(); // return -2
 };
