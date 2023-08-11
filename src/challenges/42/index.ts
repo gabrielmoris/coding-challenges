@@ -48,8 +48,59 @@ From the head of A, it reads as [4,1,8,4,5]. From the head of B, it reads as [5,
  * }
  */
 
-export const getIntersectionNode = (head1: any, head2: any) => {
-  let headA = JSON.parse(head1);
-  let headB = JSON.parse(head2);
-  console.log(headA, headB);
+/*
+We will make both of them of equal length, by moving the first pointer from A to B, 
+and the other pointer from B to A.
+For Example
+List A : [ 1, 2, 3, 4, 5, 6, 7, 8, null]
+List B : [ 9, 10, 7, 8, null]
+List A to B : [ 1, 2, 3, 4, 5, 6, 7, 8, null, 9, 10, 7, 8, null]
+List B to A : [ 9, 10, 7, 8, null, 1, 2, 3, 4, 5, 6, 7, 8, null]
+So We can Notice that if their is intersection it will be at the end; either both of them 
+will meet at first intersection or at null if their is no intersection.
+*/
+
+const headA = {
+  value: 1,
+  next: {
+    value: 9,
+    next: {
+      value: 1,
+      next: {
+        value: 1,
+        next: {
+          value: 2,
+          next: {
+            value: 4,
+            next: null,
+          },
+        },
+      },
+    },
+  },
+};
+
+const headB = {
+  value: 9,
+  next: headA.next.next.next,
+};
+
+export const getIntersectionNode = () => {
+  let firstHead: any = headA; // will move from list A to List B
+  let secondHead: any = headB; // will move from List B to List A
+
+  while (firstHead != secondHead) {
+    // if firstHead reach the first null then we switch to List B.
+    firstHead = firstHead === null ? headB : firstHead.next;
+
+    // if secondHead reach the first null the we switch to List A.
+    secondHead = secondHead === null ? headA : secondHead.next;
+
+    /*
+			Note: I keep saying the first null beacuse at the second null (in case of no intersection)
+			both of firstHead and secondHead will be equal, so the While loop will break before the switch to happen again.
+		*/
+  }
+  // simply we can return either firstHead or secondHead as both are equal to either the first intersection or to null.
+  return firstHead;
 };
