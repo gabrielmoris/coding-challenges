@@ -29,16 +29,30 @@ export const countPrimes = ([number]: string): number => {
   const n = Number(number);
   // There is an ancient algorithm called Sieve of Eratosthenes useful for this specific situation
   // https://es.wikipedia.org/wiki/Criba_de_Erat%C3%B3stenes
-  // First I create an array of Numbers from 2 to the target number
-  const arrOfNumbers = [];
-  for (let i = 2; i <= n; i++) {
-    arrOfNumbers.push(i);
+  // First I create an array of true boolean from 2 to the target number
+  let prime = [];
+
+  // Assume Every number is prime (apart from 0 & 1)
+
+  for (let i = 2; i < n; i++) {
+    prime.push(true);
   }
 
-  const squared = arrOfNumbers[0];
+  for (let j = 2; j * j < n; j++) {
+    if (prime[j] === true) {
+      // if prime[i] is true then it is a prime number
+      // therefore its multiples cannot not prime.
+      for (let k = j * j; k < n; k = k + j) {
+        //Mark all multiples of prime[i] as false as they are not prime.
+        prime[k] = false;
+      }
+    }
+  }
 
-  // another way to do the array
-  // let arrOfNumbers = Array.from({ length: 9 }, (_, i) => i + 2);
-
-  return n;
+  let count = 0;
+  // count the number of elements where prime[i] === true;
+  for (let l = 2; l < n; l++) {
+    if (prime[l] === true) count++;
+  }
+  return count;
 };
