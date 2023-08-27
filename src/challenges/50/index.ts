@@ -26,8 +26,18 @@ class TreeNode {
   }
 }
 
-export const inorderTraversal = (input: any): number[] => {
+let visited: number[];
+export const inorderTraversal = (input: string): number[] => {
   const root = JSON.parse(input);
-  console.log(root);
-  return [1];
+  visited = [];
+  traverse(root);
+  return visited;
+};
+
+const traverse = (node: { left: any; val: number; right: any }) => {
+  if (node?.left != null) traverse(node.left);
+  if (node?.val != undefined) {
+    visited.push(node?.val);
+  }
+  if (node?.right != null) traverse(node.right);
 };
