@@ -41,7 +41,6 @@ const linkListToReversedNumber = (linkedList: ListNode) => {
     stringifiedNumber = listHead.val + stringifiedNumber;
     listHead = listHead.next;
   }
-  console.log(stringifiedNumber);
   return BigInt(stringifiedNumber);
 };
 
