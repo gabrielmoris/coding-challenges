@@ -1,10 +1,94 @@
 {
-  "val": 2,
+  "val": 1,
   "next": {
-    "val": 4,
+    "val": 0,
     "next": {
-      "val": 3,
-      "next": null
+      "val": 0,
+      "next": {
+        "val": 0,
+        "next": {
+          "val": 0,
+          "next": {
+            "val": 0,
+            "next": {
+              "val": 0,
+              "next": {
+                "val": 0,
+                "next": {
+                  "val": 0,
+                  "next": {
+                    "val": 0,
+                    "next": {
+                      "val": 0,
+                      "next": {
+                        "val": 0,
+                        "next": {
+                          "val": 0,
+                          "next": {
+                            "val": 0,
+                            "next": {
+                              "val": 0,
+                              "next": {
+                                "val": 0,
+                                "next": {
+                                  "val": 0,
+                                  "next": {
+                                    "val": 0,
+                                    "next": {
+                                      "val": 0,
+                                      "next": {
+                                        "val": 0,
+                                        "next": {
+                                          "val": 0,
+                                          "next": {
+                                            "val": 0,
+                                            "next": {
+                                              "val": 0,
+                                              "next": {
+                                                "val": 0,
+                                                "next": {
+                                                  "val": 0,
+                                                  "next": {
+                                                    "val": 0,
+                                                    "next": {
+                                                      "val": 0,
+                                                      "next": {
+                                                        "val": 0,
+                                                        "next": {
+                                                          "val": 0,
+                                                          "next": {
+                                                            "val": 0,
+                                                            "next": {
+                                                              "val": 1,
+                                                              "next": null
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -41,10 +41,11 @@ const linkListToReversedNumber = (linkedList: ListNode) => {
     stringifiedNumber = listHead.val + stringifiedNumber;
     listHead = listHead.next;
   }
-  return Number(stringifiedNumber);
+  console.log(stringifiedNumber);
+  return BigInt(stringifiedNumber);
 };
 
-const reversedNumberToLinkLit = (number: number) => {
+const reversedNumberToLinkLit = (number: BigInt) => {
   const stringifiedReversedNumber = number.toString().split("").reverse();
   let linkedListSolution: ListNode = new ListNode();
   let currentNode = linkedListSolution;
