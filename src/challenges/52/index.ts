@@ -25,22 +25,20 @@ Explanation: The answer is "b", with the length of 1.
 );
 
 export const lengthOfLongestSubstring = ([s]: string): number => {
+  if (!s) return 0;
   const arrOflongStrings: string[] = [];
   let stringToCheckLength = "";
-  const arrFromString = s.split("");
+  const arrFromString: string[] = s.split("");
   arrFromString.forEach((char) => {
-    if (!stringToCheckLength.includes(char)) {
-      stringToCheckLength = stringToCheckLength + char;
-    } else {
+    const ind = stringToCheckLength.indexOf(char);
+    if (ind === -1) {
+      stringToCheckLength += char;
       arrOflongStrings.push(stringToCheckLength);
-
-      const match = stringToCheckLength.indexOf(char);
-      stringToCheckLength = stringToCheckLength.substring(match);
+    } else {
+      stringToCheckLength = stringToCheckLength.slice(ind + 1).concat(char);
     }
   });
 
-  arrOflongStrings.push(stringToCheckLength);
-  console.log(arrOflongStrings);
   arrOflongStrings.sort((a, b) => b.length - a.length);
   return arrOflongStrings[0].length;
 };
