@@ -1,4 +1,3 @@
-import { reverse } from "./../49/index";
 console.log(
   "\x1b[44m",
   "\x1b[33m",

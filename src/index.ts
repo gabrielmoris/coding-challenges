@@ -19,17 +19,15 @@ async function execute() {
     .map((item) => item.name);
 
   const getChallenge = async () => {
-    return await question("Which challenge are you doing?").then(
-      (input: string | void) => {
-        if (typeof input === "string" && dirs.includes(input)) {
-          rl.close();
-          return input;
-        } else {
-          console.log("This folder still wasn't created.");
-          getChallenge();
-        }
+    return await question("Which challenge are you doing?").then((input: string | void) => {
+      if (typeof input === "string" && dirs.includes(input)) {
+        rl.close();
+        return input;
+      } else {
+        console.log("This folder still wasn't created.");
+        getChallenge();
       }
-    );
+    });
   };
 
   const challenge = await getChallenge();
@@ -41,7 +39,11 @@ async function execute() {
     const input = read("../challenges/" + challenge + "/input.txt");
     mainInput = input.split("\n");
   } catch {
-    mainInput = read("../challenges/" + challenge + "/input.json");
+    try {
+      mainInput = await import("./challenges/" + challenge + "/input.ts");
+    } catch {
+      mainInput = read("../challenges/" + challenge + "/input.json");
+    }
   }
   let secondaryInput: any;
   try {
@@ -49,7 +51,11 @@ async function execute() {
       const input2 = read("../challenges/" + challenge + "/input2.txt");
       secondaryInput = input2.split("\n");
     } catch {
-      secondaryInput = read("../challenges/" + challenge + "/input2.json");
+      try {
+        secondaryInput = await import("./challenges/" + challenge + "/input2.ts");
+      } catch {
+        secondaryInput = read("../challenges/" + challenge + "/input2.json");
+      }
     }
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
@@ -57,15 +63,8 @@ async function execute() {
         const start = performance.now();
         const solution = fn(mainInput, secondaryInput);
         const end = performance.now();
-        console.log(
-          `${index + 1}. Challenge ${challenge} - ${fn.name}: `,
-          solution
-        );
-        console.log(
-          `${index + 1}. Execution took ${(end - start).toPrecision(
-            4
-          )} milliseconds.`
-        );
+        console.log(`${index + 1}. Challenge ${challenge} - ${fn.name}: `, solution);
+        console.log(`${index + 1}. Execution took ${(end - start).toPrecision(4)} milliseconds.`);
       }
     });
   } catch {
@@ -75,15 +74,8 @@ async function execute() {
         const start = performance.now();
         const solution = fn(mainInput);
         const end = performance.now();
-        console.log(
-          `${index + 1}. Challenge ${challenge} - ${fn.name}: `,
-          solution
-        );
-        console.log(
-          `${index + 1}. Execution took ${(end - start).toPrecision(
-            4
-          )} milliseconds.`
-        );
+        console.log(`${index + 1}. Challenge ${challenge} - ${fn.name}: `, solution);
+        console.log(`${index + 1}. Execution took ${(end - start).toPrecision(4)} milliseconds.`);
       }
     });
   }
