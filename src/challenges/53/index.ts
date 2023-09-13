@@ -22,6 +22,6 @@ console.log(
   "\x1b[0m"
 );
 
-export const lengthOfLongestSubstring = ({ grid }: any) => {
+export const numIslands = ({ grid }: any) => {
   console.log(grid);
 };
