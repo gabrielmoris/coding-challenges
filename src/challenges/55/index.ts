@@ -33,10 +33,42 @@ class Node {
 }
 
 export const copyRandomList = ({ head }: any) => {
-  // Iterate to the LL creating isolated heads whose next points at null and random at null
+  if (!head) {
+    return head;
+  }
 
-  // iterate again andpoint to the random nodes of the linked list
+  // CReate an array of the Nodes isolated
+  const isolatedNodesOriginal: (Node | null)[] = createArrofIsolatedNodes(head);
+  // Mak a copy of the LL withouth randoms
+  const newCopiedListNoRandoms = copy(head);
+  // Create another array of the newCopiedListNoRandoms
+  const isolatedNodesCopied = createArrofIsolatedNodes(newCopiedListNoRandoms);
+  // iterate over the array of noodes original and check the pointers (index) of the randoms use the same index of the copies and link them
+  for (let i = 0; i < isolatedNodesOriginal.length; i++) {
+    const index = isolatedNodesOriginal[i]?.random ? isolatedNodesOriginal.indexOf(isolatedNodesOriginal[i]!.random) : null;
+    if (index !== null) {
+      isolatedNodesCopied[i].random = isolatedNodesCopied[index];
+    }
+  }
 
-  // iterate again pointing to the next
-  console.log(head);
+  return newCopiedListNoRandoms;
+};
+
+const copy = (node: Node | null): any => {
+  if (!node) {
+    return null;
+  }
+  return new Node(node.val, copy(node.next));
+};
+
+const createArrofIsolatedNodes = (head: any): Node[] => {
+  let currentHead: Node | null = head;
+  const isolatedNodes: Node[] = [];
+  // Iterate to the LL creating isolated Nodes whose next points at null and random at null
+
+  while (currentHead) {
+    isolatedNodes.push(currentHead);
+    currentHead = currentHead.next;
+  }
+  return isolatedNodes;
 };
