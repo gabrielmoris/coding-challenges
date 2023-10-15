@@ -1,5 +1,4 @@
-import { SolutionFunction } from "../..";
-export const reverseString: SolutionFunction = (str: string[]): string[] => {
+export const reverseString = ({ str }: { str: string[] }): string[] => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -18,10 +17,7 @@ export const reverseString: SolutionFunction = (str: string[]): string[] => {
     const forwardLetter = i;
     const backwardsLetter = str.length - i - 1;
     if (str[forwardLetter] !== str[backwardsLetter]) {
-      [str[forwardLetter], str[backwardsLetter]] = [
-        str[backwardsLetter],
-        str[forwardLetter],
-      ];
+      [str[forwardLetter], str[backwardsLetter]] = [str[backwardsLetter], str[forwardLetter]];
     }
   }
   if (!str[0]) {

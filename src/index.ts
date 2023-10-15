@@ -33,30 +33,25 @@ async function execute() {
   const challenge = await getChallenge();
 
   if (!challenge) return;
+
   let mainInput: any;
+
   const mod = await import("./challenges/" + challenge + "/index.ts");
   try {
-    const input = read("../challenges/" + challenge + "/input.txt");
-    mainInput = input.split("\n");
+    mainInput = await import("./challenges/" + challenge + "/input.ts");
   } catch {
-    try {
-      mainInput = await import("./challenges/" + challenge + "/input.ts");
-    } catch {
-      mainInput = read("../challenges/" + challenge + "/input.json");
-    }
+    console.log("no input.ts provided for Arg 1");
   }
+
   let secondaryInput: any;
+
   try {
-    try {
-      const input2 = read("../challenges/" + challenge + "/input2.txt");
-      secondaryInput = input2.split("\n");
-    } catch {
-      try {
-        secondaryInput = await import("./challenges/" + challenge + "/input2.ts");
-      } catch {
-        secondaryInput = read("../challenges/" + challenge + "/input2.json");
-      }
-    }
+    secondaryInput = await import("./challenges/" + challenge + "/input2.ts");
+  } catch {
+    console.log("no input2.ts provided for Arg 1");
+  }
+
+  if (secondaryInput) {
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
         const fn = mod[key] as SolutionFunction;
@@ -67,7 +62,7 @@ async function execute() {
         console.log(`${index + 1}. Execution took ${(end - start).toPrecision(4)} milliseconds.`);
       }
     });
-  } catch {
+  } else {
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
         const fn = mod[key] as SolutionFunction;
@@ -80,4 +75,5 @@ async function execute() {
     });
   }
 }
+
 execute();

@@ -1,7 +1,4 @@
-import { SolutionFunction } from "../..";
-export const singleNumber: SolutionFunction = (
-  arrOfNumber: string[]
-): number => {
+export const singleNumber = ({ arrOfNumber }: { arrOfNumber: number[] }): number => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -21,5 +18,5 @@ export const singleNumber: SolutionFunction = (
   });
   const number = [...result.keys()];
 
-  return Number(number[0]);
+  return number[0];
 };

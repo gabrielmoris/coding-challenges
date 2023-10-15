@@ -1,7 +1,4 @@
-import { SolutionFunction } from "../..";
-export const fizzbuzz: SolutionFunction = (
-  arrOfStr: string[]
-): string[] | string => {
+export const fizzbuzz = ({ number }: { number: number }): string[] | string => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -16,9 +13,7 @@ export const fizzbuzz: SolutionFunction = (
     "answer[i] == i (as a string) if none of the above conditions are true.",
     "\x1b[0m"
   );
-  const nums = arrOfStr.map(toNumber);
 
-  let number = nums[0];
   const response = [];
 
   if (number <= 1) {
@@ -37,7 +32,3 @@ export const fizzbuzz: SolutionFunction = (
 
   return response;
 };
-
-function toNumber(value: string) {
-  return Number(value);
-}
