@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -9,10 +7,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const getSum: SolutionFunction = (firstNum, secondNum): any => {
-  let a = Number(firstNum[0]);
-  let b = Number(secondNum[0]);
-
+export const getSum = ({ a }: { a: number }, { b }: { b: number }): any => {
   // //Using Bitwise operators:
   // while (b !== 0) {
   //   // Perform bitwise AND operation between a and b and assign the result to a variable called "carry".

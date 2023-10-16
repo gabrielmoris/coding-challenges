@@ -1,9 +1,6 @@
 import fs from "fs";
-import read from "./utils/readFile";
 import readline from "readline";
 import util from "util";
-
-export type SolutionFunction = (input: string[], input2?: any) => any;
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -54,7 +51,7 @@ async function execute() {
   if (secondaryInput) {
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
-        const fn = mod[key] as SolutionFunction;
+        const fn = mod[key];
         const start = performance.now();
         const solution = fn(mainInput, secondaryInput);
         const end = performance.now();
@@ -65,7 +62,7 @@ async function execute() {
   } else {
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
-        const fn = mod[key] as SolutionFunction;
+        const fn = mod[key];
         const start = performance.now();
         const solution = fn(mainInput);
         const end = performance.now();
