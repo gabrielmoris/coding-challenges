@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -8,8 +6,7 @@ console.log(
 );
 
 //More performant, recursive function
-export const missingNumber: SolutionFunction = (numsArr: any[]): any => {
-  const nums = numsArr.map((str) => Number(str));
+export const missingNumber = ({ nums }: { nums: number[] }): any => {
   // Remember that the numbers are not really sorted!
   nums.sort(function (a, b) {
     return a - b;

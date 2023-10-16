@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -9,18 +7,14 @@ console.log(
 );
 
 //More performant, recursive function
-export const sortedArrayToBST: SolutionFunction = (nums: any[]): any => {
+export const sortedArrayToBST = ({ nums }: { nums: number[] }): any => {
   if (nums.length === 0) return null;
 
   if (nums.length === 1) return new TreeNode(nums[0]);
 
   const i = Math.floor(nums.length / 2);
 
-  return new TreeNode(
-    nums[i],
-    sortedArrayToBST(nums.slice(0, i)),
-    sortedArrayToBST(nums.slice(i + 1, nums.length))
-  );
+  return new TreeNode(nums[i], sortedArrayToBST({ nums: nums.slice(0, i) }), sortedArrayToBST({ nums: nums.slice(i + 1, nums.length) }));
 };
 
 class TreeNode {

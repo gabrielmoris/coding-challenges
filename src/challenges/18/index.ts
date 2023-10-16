@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -7,8 +5,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const firstUniqChar: SolutionFunction = (str: string[]): any => {
-  const s: string = str[0];
+export const firstUniqChar = ({ s }: { s: string }): any => {
   const charsMapper: { [key: string]: number } = {};
   for (const c of [...s]) {
     charsMapper[c] = charsMapper[c] ? charsMapper[c] + 1 : 1;

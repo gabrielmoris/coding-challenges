@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -16,13 +14,10 @@ console.log(
   "\x1b[0m"
 );
 // Funciona, pero debería buscar hacerlo en O1. Es posible?
-export const maxProfit: SolutionFunction = (
-  string: string[],
-  anagram: string[]
-): any => {
+export const maxProfit = ({ string }: { string: string }, { anagram }: { anagram: string }): any => {
   // Much better performant solution
-  const sortedS: string = string[0].split("").sort().join("");
-  const sortedT: string = anagram[0].split("").sort().join("");
+  const sortedS: string = string.split("").sort().join("");
+  const sortedT: string = anagram.split("").sort().join("");
   return sortedS === sortedT;
   // let result = true;
   // const str = string[0].split("");
