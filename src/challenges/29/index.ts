@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -18,17 +16,10 @@ console.log(
   "\x1b[0m"
 );
 
-export const isPowerOfThree: any = (arg: any) => {
-  let n: number;
-  if (Array.isArray(arg)) {
-    n = Number(arg[0]);
-  } else {
-    n = arg;
-  }
-
+export const isPowerOfThree: any = ({ n }: { n: number }) => {
   if (n === 0) return false;
   if (n === 1) return true;
   // I do it recursively until n is 0 or not
-  if (n % 3 === 0) return isPowerOfThree(n / 3);
+  if (n % 3 === 0) return isPowerOfThree({ n: n / 3 });
   return false;
 };

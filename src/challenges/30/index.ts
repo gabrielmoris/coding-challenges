@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -26,8 +24,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const hammingWeight: any = (arg: any) => {
-  let n: number = Number(arg[0]);
+export const hammingWeight: any = ({ n }: { n: number }) => {
   const binary = (n >>> 0).toString(2);
   const ones = binary.split("").filter((bit) => {
     return bit === "1";

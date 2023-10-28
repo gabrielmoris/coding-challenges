@@ -45,7 +45,7 @@ async function execute() {
   try {
     secondaryInput = await import("./challenges/" + challenge + "/input2.ts");
   } catch {
-    console.log("no input2.ts provided for Arg 1");
+    console.log("no input2.ts provided for Arg 2");
   }
 
   if (secondaryInput) {
