@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -23,25 +21,7 @@ class ListNode {
   }
 }
 
-export const mergeTwoLists: SolutionFunction = (
-  nodeList1: any | null,
-  nodeList2: any
-) => {
-  // I try to parse the list or I return an empty object
-  let list1;
-  let list2;
-
-  try {
-    list1 = JSON.parse(nodeList1);
-  } catch {
-    list1 = list1;
-  }
-  try {
-    list2 = JSON.parse(nodeList2);
-  } catch {
-    list2 = list2;
-  }
-
+export const mergeTwoLists = ({ list1 }: any | null, { list2 }: any) => {
   // I create a new empty node and I asign the head to it
 
   if (list1 === undefined && list2 === undefined) {

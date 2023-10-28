@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -13,8 +11,7 @@ Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]
   "\x1b[0m"
 );
 
-export const generate: SolutionFunction = (arg: string[]): number[][] => {
-  const numRows = Number(arg[0]);
+export const generate = ({ numRows }: { numRows: number }): number[][] => {
   let i = 0;
   const arrSol: number[][] = [];
 
