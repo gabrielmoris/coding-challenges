@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -37,8 +35,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const removeDuplicates = (arr: string[]) => {
-  const nums = arr.map((str) => Number(str));
+export const removeDuplicates = ({ nums }: { nums: number[] }) => {
   let k: number = 1;
 
   for (let i = 1; i < nums.length; i++) {

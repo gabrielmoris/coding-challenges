@@ -13,8 +13,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const isValid = (arr: string[]) => {
-  const s = arr[0];
+export const isValid = ({ s }: { s: string }) => {
   const callStack: string[] = [];
   const matches = {
     "{": "}",

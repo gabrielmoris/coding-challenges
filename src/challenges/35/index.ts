@@ -65,8 +65,7 @@ Note that n! = n * (n - 1) * (n - 2) * ... * 3 * 2 * 1.
 // Space complexity: The space complexity is O(1) because we are using
 // only a constant amount of extra space to store the res variable.
 
-export const trailingZeroes = (arr: string[]) => {
-  let n = Number(arr[0]);
+export const trailingZeroes = ({ n }: { n: number }) => {
   let res = 0;
   while (n > 0) {
     n = Math.floor(n / 5);
