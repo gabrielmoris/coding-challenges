@@ -24,8 +24,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const reverse = ([number]: string): number => {
-  const x = Number(number);
+export const reverse = ({ x }: { x: number }): number => {
   // 32-bit int min-max range
   const MIN = -2147483648;
   const MAX = 2147483647;
@@ -41,14 +40,9 @@ export const reverse = ([number]: string): number => {
     }
   } else {
     const stringifiedNumber = x.toString();
-    const positivestringifiedNumber = stringifiedNumber.substring(
-      1,
-      stringifiedNumber.length
-    );
+    const positivestringifiedNumber = stringifiedNumber.substring(1, stringifiedNumber.length);
 
-    const solution = Number(
-      +positivestringifiedNumber.split("").reverse().join("")
-    );
+    const solution = Number(+positivestringifiedNumber.split("").reverse().join(""));
     if (-solution < MIN) {
       return 0;
     } else {

@@ -25,8 +25,7 @@ Output: 0
   "\x1b[0m"
 );
 
-export const countPrimes = ([number]: string): number => {
-  const n = Number(number);
+export const countPrimes = ({ n }: { n: number }): number => {
   // There is an ancient algorithm called Sieve of Eratosthenes useful for this specific situation
   // https://es.wikipedia.org/wiki/Criba_de_Erat%C3%B3stenes
   // First I create an array of true boolean from 2 to the target number
