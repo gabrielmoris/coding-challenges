@@ -23,7 +23,7 @@ Explanation: The answer is "b", with the length of 1.
   "\x1b[0m"
 );
 
-export const lengthOfLongestSubstring = ([s]: string): number => {
+export const lengthOfLongestSubstring = ({ s }: { s: string }): number => {
   if (!s) return 0;
   const arrOflongStrings: string[] = [];
   let stringToCheckLength = "";
