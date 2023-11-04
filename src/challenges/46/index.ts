@@ -17,10 +17,8 @@ Explanation: "amanaplanacanalpanama" is a palindrome.
   "\x1b[0m"
 );
 
-export const isPalindrome = ([s]: string) => {
-  const stringInLowercase = s
-    .replaceAll(/[^a-zA-Z0-9]/g, "")
-    .toLocaleLowerCase();
+export const isPalindrome = ({ s }: { s: string }) => {
+  const stringInLowercase = s.replaceAll(/[^a-zA-Z0-9]/g, "").toLocaleLowerCase();
   if (stringInLowercase.length <= 1) {
     return true;
   }
@@ -35,8 +33,7 @@ export const isPalindrome = ([s]: string) => {
         .substring(stringInLowercase.length / 2 + 1, stringInLowercase.length)
         .split("")
         .reverse()
-        .join("") ===
-      stringInLowercase.substring(0, stringInLowercase.length / 2)
+        .join("") === stringInLowercase.substring(0, stringInLowercase.length / 2)
     );
   } else {
     return (
@@ -44,8 +41,7 @@ export const isPalindrome = ([s]: string) => {
         .substring(stringInLowercase.length / 2, stringInLowercase.length)
         .split("")
         .reverse()
-        .join("") ===
-      stringInLowercase.substring(0, stringInLowercase.length / 2)
+        .join("") === stringInLowercase.substring(0, stringInLowercase.length / 2)
     );
   }
 };

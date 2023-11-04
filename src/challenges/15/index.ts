@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -24,8 +22,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const romanToInt: SolutionFunction = (input: string[]): any => {
-  const str = input[0];
+export const romanToInt = ({ str }: { str: string }): any => {
   // Interface of an object to compare
   const cifra: { [key: string]: number } = {
     I: 1,

@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -18,8 +16,7 @@ console.log(
   "\x1b[0m"
 );
 // Funciona, pero debería buscar hacerlo en O1. Es posible?
-export const maxProfit: SolutionFunction = (prices: string[]): any => {
-  const stockArr = prices.map(toNumber);
+export const maxProfit = ({ stockArr }: { stockArr: number[] }): any => {
   let profits = 0;
   for (let i = 1; i < stockArr.length; i++) {
     if (stockArr[i] > stockArr[i - 1]) {
@@ -28,6 +25,3 @@ export const maxProfit: SolutionFunction = (prices: string[]): any => {
   }
   return profits;
 };
-function toNumber(value: string) {
-  return Number(value);
-}

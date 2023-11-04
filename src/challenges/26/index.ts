@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -28,10 +26,8 @@ Explanation: There are three ways to climb to the top.
   "\x1b[0m"
 );
 
-export const climbStairs = (arg: number | string[]): number => {
-  const n = typeof arg !== "number" ? Number(arg[0]) : arg;
-
-  return n <= 3 ? n : 2 * climbStairs(n - 2) + climbStairs(n - 3);
+export const climbStairs = ({ n }: { n: number }): number => {
+  return n <= 3 ? n : 2 * climbStairs({ n: n - 2 }) + climbStairs({ n: n - 3 });
 
   // if (n <= 2) {
   //   return n;

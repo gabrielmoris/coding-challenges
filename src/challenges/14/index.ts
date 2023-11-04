@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -12,8 +10,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const majorityElement: SolutionFunction = (input: string[]): number => {
-  const nums = input.map(toNumber);
+export const majorityElement = ({ nums }: { nums: number[] }): number => {
   if (nums.length <= 2) {
     return nums[0];
   }
@@ -22,7 +19,3 @@ export const majorityElement: SolutionFunction = (input: string[]): number => {
   const order = nums.sort();
   return order[Math.floor(nums.length / 2)]; //O(1)
 };
-
-function toNumber(value: string) {
-  return Number(value);
-}

@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -14,9 +12,7 @@ Explanation: The subarray [4,-1,2,1] has the largest sum 6.
   "\x1b[0m"
 );
 
-export const maxSubArray: SolutionFunction = (arg: any) => {
-  const nums: number[] = arg.map((string: string) => Number(string));
-
+export const maxSubArray = ({ nums }: { nums: number[] }) => {
   for (let i = 1; i < nums.length; i++) {
     if (nums[i - 1] >= 0) {
       nums[i] += nums[i - 1];

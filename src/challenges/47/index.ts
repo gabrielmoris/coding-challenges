@@ -25,9 +25,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const rotate = (numbers: string[], [rotations]: string): void => {
-  let k = Number(rotations);
-  let nums: number[] = numbers.map((number) => Number(number));
+export const rotate = ({ nums }: { nums: number[] }, { k }: { k: number }): void => {
   while (k--) nums.unshift(nums.pop() as number);
   console.log(nums);
 };

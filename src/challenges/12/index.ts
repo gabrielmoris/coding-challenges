@@ -20,8 +20,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const reverseList: SolutionFunction = (head: any): any => {
-  let parsedList = JSON.parse(head);
+export const reverseList: SolutionFunction = ({ head }: any): any => {
   // First I sabe what is in head, I put the head in result putting next as null and saving next in a variable
   //Then I iterate asigning the next as head and puting it as the parent in result
   if (head === null || head.next === null) {
@@ -29,14 +28,14 @@ export const reverseList: SolutionFunction = (head: any): any => {
   }
 
   let tail: { value: number; next: any } = {
-    value: parsedList.value,
+    value: head.value,
     next: null,
   };
   let result;
-  while (parsedList.next != null) {
-    result = { value: parsedList.next.value, next: tail };
+  while (head.next != null) {
+    result = { value: head.next.value, next: tail };
     tail = result;
-    parsedList = parsedList.next;
+    head = head.next;
   }
   return JSON.stringify(result);
 };

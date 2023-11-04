@@ -1,9 +1,6 @@
 import fs from "fs";
-import read from "./utils/readFile";
 import readline from "readline";
 import util from "util";
-
-export type SolutionFunction = (input: string[], input2?: any) => any;
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -33,33 +30,28 @@ async function execute() {
   const challenge = await getChallenge();
 
   if (!challenge) return;
+
   let mainInput: any;
+
   const mod = await import("./challenges/" + challenge + "/index.ts");
   try {
-    const input = read("../challenges/" + challenge + "/input.txt");
-    mainInput = input.split("\n");
+    mainInput = await import("./challenges/" + challenge + "/input.ts");
   } catch {
-    try {
-      mainInput = await import("./challenges/" + challenge + "/input.ts");
-    } catch {
-      mainInput = read("../challenges/" + challenge + "/input.json");
-    }
+    console.log("no input.ts provided for Arg 1");
   }
+
   let secondaryInput: any;
+
   try {
-    try {
-      const input2 = read("../challenges/" + challenge + "/input2.txt");
-      secondaryInput = input2.split("\n");
-    } catch {
-      try {
-        secondaryInput = await import("./challenges/" + challenge + "/input2.ts");
-      } catch {
-        secondaryInput = read("../challenges/" + challenge + "/input2.json");
-      }
-    }
+    secondaryInput = await import("./challenges/" + challenge + "/input2.ts");
+  } catch {
+    console.log("no input2.ts provided for Arg 2");
+  }
+
+  if (secondaryInput) {
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
-        const fn = mod[key] as SolutionFunction;
+        const fn = mod[key];
         const start = performance.now();
         const solution = fn(mainInput, secondaryInput);
         const end = performance.now();
@@ -67,10 +59,10 @@ async function execute() {
         console.log(`${index + 1}. Execution took ${(end - start).toPrecision(4)} milliseconds.`);
       }
     });
-  } catch {
+  } else {
     Object.keys(mod).forEach((key, index) => {
       if (typeof mod[key] === "function") {
-        const fn = mod[key] as SolutionFunction;
+        const fn = mod[key];
         const start = performance.now();
         const solution = fn(mainInput);
         const end = performance.now();
@@ -80,4 +72,5 @@ async function execute() {
     });
   }
 }
+
 execute();

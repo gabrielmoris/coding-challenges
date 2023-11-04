@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -29,8 +27,7 @@ countAndSay(4) = say "21" = one 2 + one 1 = "12" + "11" = "1211"
   "\x1b[0m"
 );
 
-export const countAndSay = (arr: string[]) => {
-  let n = Number(arr[0]);
+export const countAndSay = ({ n }: { n: number }) => {
   let stringToReturn = "1";
   for (let i = n; i > 1; i--) {
     let current = "";

@@ -21,7 +21,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const longestCommonPrefix = (strs: string[]) => {
+export const longestCommonPrefix = ({ strs }: { strs: string[] }) => {
   let prefix = strs[0];
 
   strs.forEach((str) => {

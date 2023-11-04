@@ -1,4 +1,3 @@
-import { reverse } from "./../49/index";
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -26,9 +25,7 @@ class ListNode {
   }
 }
 
-export const addTwoNumbers = (input1: string, input2: string) => {
-  const l1 = JSON.parse(input1);
-  const l2 = JSON.parse(input2);
+export const addTwoNumbers = ({ l1 }: { l1: any }, { l2 }: { l2: any }) => {
   const numberl1 = linkListToReversedNumber(l1);
   const numberl2 = linkListToReversedNumber(l2);
   return reversedNumberToLinkLit(numberl1 + numberl2);
@@ -55,5 +52,5 @@ const reversedNumberToLinkLit = (number: BigInt) => {
       currentNode = currentNode.next;
     }
   });
-  return linkedListSolution;
+  return JSON.stringify(linkedListSolution);
 };

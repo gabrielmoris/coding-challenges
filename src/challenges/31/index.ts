@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -18,9 +16,7 @@ Total amount you can rob = 1 + 3 = 4.
   "\x1b[0m"
 );
 
-export const rob: any = (arg: any) => {
-  const n = arg.map((string: string) => Number(string));
-
+export const rob: any = ({ n }: { n: number[] }) => {
   let include = 0;
   let exclude = 0;
 

@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -12,7 +10,7 @@ console.log(
 );
 
 //More performant, recursive function
-export const missingNumber: SolutionFunction = (nums1: any[]): any => {
+export const missingNumber = ({ nums1 }: { nums1: number[] }) => {
   const prices = nums1.map((item) => Number(item));
 
   let min = prices[0];

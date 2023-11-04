@@ -1,4 +1,3 @@
-import { SolutionFunction } from "../..";
 /**
  * Definition for a binary tree node.
  * class TreeNode {
@@ -21,12 +20,9 @@ console.log(
   "A binary tree's maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.",
   "\x1b[0m"
 );
-export const maxDepth: SolutionFunction = (root: any): number => {
+export const maxDepth = ({ root }: { root: any }): number => {
   if (!root) return 0;
-  if (typeof root !== "object") {
-    root = JSON.parse(root);
-  }
 
   //recursively adds 1 for each node it finds deeper returning only the deepest one.
-  return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+  return Math.max(maxDepth({ root: root.left }), maxDepth({ root: root.right })) + 1;
 };

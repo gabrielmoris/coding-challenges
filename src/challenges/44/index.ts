@@ -19,12 +19,12 @@ console.log(
   Input: x = 8
   Output: 2
   Explanation: The square root of 8 is 2.82842..., and since we round it down to the nearest integer, 2 is returned.
+  https://leetcode.com/problems/sqrtx/
    `,
   "\x1b[0m"
 );
 
-export const call = (input: any) => {
-  const x = input.map((x: any) => Number(x));
+export const call = ({ x }: { x: any }) => {
   x.forEach((number: number) => {
     console.log(number, ": ", mySqrt(number));
   });

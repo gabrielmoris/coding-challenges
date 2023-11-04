@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -24,8 +22,7 @@ class TreeNode {
   }
 }
 
-export const isSymmetric: SolutionFunction = (arg: any): boolean => {
-  let root = JSON.parse(arg);
+export const isSymmetric = ({ root }: { root: any }): boolean => {
   //I start with an array with the right and left part of the three
   const stack = [[root.left, root.right]];
 

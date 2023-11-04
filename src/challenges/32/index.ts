@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -19,7 +17,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const plusOne = (arr: string[]) => {
+export const plusOne = ({ arr }: { arr: string[] }) => {
   // If I use Number Javascript cant handle It because it is too big. That is Why I have to use BigInt
   const number = BigInt(arr.join("")) + BigInt(1);
 

@@ -12,8 +12,7 @@ Output: true
   "\x1b[0m"
 );
 
-export const isPalindrome = (json: any) => {
-  let head = JSON.parse(json);
+export const isPalindrome = ({ head }: { head: any }) => {
   const arr = [];
 
   while (head) {
@@ -22,10 +21,7 @@ export const isPalindrome = (json: any) => {
   }
 
   const arr1 = arr.slice(0, arr.length / 2);
-  const arr2 =
-    arr.length % 2 === 0
-      ? arr.slice(arr.length / 2, arr.length)
-      : arr.slice(arr.length / 2 + 1, arr.length);
+  const arr2 = arr.length % 2 === 0 ? arr.slice(arr.length / 2, arr.length) : arr.slice(arr.length / 2 + 1, arr.length);
   const res = JSON.stringify(arr1) === JSON.stringify(arr2.reverse());
   return res;
 };

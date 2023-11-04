@@ -1,5 +1,4 @@
-import { SolutionFunction } from "../..";
-export const rotateNums: SolutionFunction = (arr, steps): any => {
+export const rotateNums = ({ nums }: { nums: number[] }, { k }: { k: number }): any => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -8,8 +7,6 @@ export const rotateNums: SolutionFunction = (arr, steps): any => {
     "It must be the argument modifyed and not send a new variable",
     "\x1b[0m"
   );
-  const nums = arr.map(toNumber);
-  let k = Number(steps[0]);
 
   if (k <= 0) {
     return nums;
@@ -23,7 +20,3 @@ export const rotateNums: SolutionFunction = (arr, steps): any => {
   }
   return nums;
 };
-
-function toNumber(value: string) {
-  return Number(value);
-}

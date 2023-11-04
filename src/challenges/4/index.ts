@@ -1,5 +1,4 @@
-import { SolutionFunction } from "../..";
-export const containsDuplicate: SolutionFunction = (arrOfStr): any => {
+export const containsDuplicate = ({ nums }: { nums: number[] }): any => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -8,7 +7,6 @@ export const containsDuplicate: SolutionFunction = (arrOfStr): any => {
     "\x1b[0m"
   );
 
-  const nums = arrOfStr.map(toNumber);
   let result = false;
   const map = new Map();
 
@@ -23,7 +21,3 @@ export const containsDuplicate: SolutionFunction = (arrOfStr): any => {
 
   return result;
 };
-
-function toNumber(value: string) {
-  return Number(value);
-}

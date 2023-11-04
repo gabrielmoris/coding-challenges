@@ -20,7 +20,7 @@ Explanation: "leeto" did not occur in "leetcode", so we return -1.
   "\x1b[0m"
 );
 
-export const strStr = ([haystack]: string, [needle]: string): number => {
+export const strStr = ({ haystack }: { haystack: string }, { needle }: { needle: string }): number => {
   if (!haystack.includes(needle)) return -1;
   return haystack.indexOf(needle);
 };

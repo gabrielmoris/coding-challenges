@@ -1,5 +1,4 @@
-import { SolutionFunction } from "../..";
-export const zerosToEnd: SolutionFunction = (arrOfStr): any => {
+export const zerosToEnd = ({ nums }: { nums: number[] }): any => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -8,7 +7,6 @@ export const zerosToEnd: SolutionFunction = (arrOfStr): any => {
     "Note that you must do this in-place without making a copy of the array.",
     "\x1b[0m"
   );
-  const nums = arrOfStr.map(toNumber);
 
   let left = 0;
   for (let i = 0; i < nums.length; i++) {
@@ -26,7 +24,3 @@ export const zerosToEnd: SolutionFunction = (arrOfStr): any => {
   }
   return nums;
 };
-
-function toNumber(value: string) {
-  return Number(value);
-}

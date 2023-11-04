@@ -1,5 +1,4 @@
-import { SolutionFunction } from "../..";
-export const containsDuplicate: SolutionFunction = (str): any => {
+export const containsDuplicate = ({ str }: { str: string }): any => {
   console.log(
     "\x1b[44m",
     "\x1b[33m",
@@ -11,7 +10,7 @@ export const containsDuplicate: SolutionFunction = (str): any => {
     "\x1b[0m"
   );
   const arrBigWords: string[] = [];
-  const arrOfSentence = str[0].split(" ");
+  const arrOfSentence = str.split(" ");
 
   arrOfSentence.forEach((item) => {
     const splitted = item.split("");

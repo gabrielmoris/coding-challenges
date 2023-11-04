@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -17,8 +15,8 @@ console.log(
   "\x1b[0m"
 );
 
-export const titleToNumber: SolutionFunction = (input: string[]): number => {
-  const columnTitle = input[0].toUpperCase();
+export const titleToNumber = ({ input }: { input: string }): number => {
+  const columnTitle = input.toUpperCase();
   // A-Z luego AA-AZ luego BA-BZ etc... AAA sería 703
   if (columnTitle.length < 1) {
     return 0;

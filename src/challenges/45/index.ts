@@ -19,9 +19,9 @@ console.log(
   "\x1b[0m"
 );
 
-export const reverseBits = ([n]: string) => {
+export const reverseBits = ({ n }: { n: number }) => {
   // I transform number to binary
-  let bit = Number(n).toString(2);
+  let bit = n.toString(2);
 
   // I add 0 at the begginning to make it be 32 bits
   while (bit.length < 32) {

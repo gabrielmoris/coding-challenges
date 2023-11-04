@@ -16,7 +16,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const longestPalindrome = ([s]: string) => {
+export const longestPalindrome = ({ s }: { s: string }) => {
   if (s.length <= 1) {
     return s;
   }
@@ -32,7 +32,7 @@ export const longestPalindrome = ([s]: string) => {
   const possibleSolutions = arrSol.sort((a, b) => {
     return b.length - a.length;
   });
-  console.log(possibleSolutions);
+  // console.log(possibleSolutions);
   return possibleSolutions[0];
 };
 
@@ -41,6 +41,6 @@ const checkPalFromThisChar = (left: number, right: number, string: string): stri
     left--;
     right++;
   }
-  console.log(left, right);
+  // console.log(left, right);
   return string.substring(left + 1, right);
 };

@@ -16,13 +16,10 @@ console.log(
   "\x1b[0m"
 );
 
-export const merge = (nums1: any, nums2: any) => {
+export const merge = ({ nums1 }: { nums1: number[] }, { nums2 }: { nums2: number[] }) => {
   // I hardcode this argument
   const m = 3;
   const n = 3;
-
-  nums1 = nums1.map((num: string) => Number(num));
-  nums2 = nums2.map((num: string) => Number(num));
   let firstHalf = nums1.slice(0, m);
   let secondHalf = nums2.slice(0, n);
   secondHalf.forEach((num: number) => firstHalf.push(num));

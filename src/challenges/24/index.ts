@@ -1,5 +1,3 @@
-import { SolutionFunction } from "../..";
-
 console.log(
   "\x1b[44m",
   "\x1b[33m",
@@ -19,13 +17,12 @@ Explanation:
 82 + 22 = 68
 62 + 82 = 100
 12 + 02 + 02 = 1
+https://leetcode.com/problems/happy-number/
    `,
   "\x1b[0m"
 );
 
-export const isHappy: SolutionFunction = (arg: any) => {
-  let n = typeof arg === "object" ? arg[0] : arg;
-
+export const isHappy = ({ n }: { n: string }) => {
   try {
     while (n.length > 1 || Number(n) > 4) {
       console.log(Number(n));
