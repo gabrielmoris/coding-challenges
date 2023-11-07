@@ -29,5 +29,17 @@ Output: false
 );
 
 export const wordBreak = ({ s }: { s: string }, { wordDict }: { wordDict: string[] }) => {
-  console.log(s, wordDict);
+  let memo = [];
+  for (let i = 0; i < s.length; i++) {
+    let j = memo.length;
+    while (j >= 0) {
+      if (wordDict.indexOf(s.slice(memo[j], i + 1)) >= 0) {
+        memo.push(i + 1);
+        break;
+      }
+      j--;
+    }
+  }
+
+  return memo[memo.length - 1] === s.length;
 };
