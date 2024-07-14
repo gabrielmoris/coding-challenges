@@ -2,8 +2,10 @@ console.log(
   "\x1b[44m",
   "\x1b[33m",
   `
-  Write a function that implements the breadth-first search (BFS) algorithm on a directed graph (in adjacency list format), given a starting node.
-  https://www.greatfrontend.com/questions/javascript/breadth-first-search?list=data-structures-algorithms
+Implement a function that performs an insertion sort. 
+The function should take in an array of integers and return an array with the integers sorted in ascending order. 
+The input array is modified. 
+https://www.greatfrontend.com/questions/javascript/insertion-sort?list=data-structures-algorithms
   `,
   "\x1b[0m"
 );
