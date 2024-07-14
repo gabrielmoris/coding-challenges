@@ -12,22 +12,31 @@ console.log(
  * @param source The source node to start traversal from. Has to be a valid node if graph is non-empty.
  * @return A BFS-traversed order of nodes.
  */
-export const breadthFirstSearch = (
-  { graph }: { graph: Record<string, Array<string>> },
-  { source }: { source: string }
-): Array<string> => {
-  let result: [string] | [] = [];
+export const breadthFirstSearch = ({ graph }: { graph: Record<string, Array<string>> }, { source }: { source: string }): [string] | [] => {
+  let result = new Set();
 
   const keys = Object.keys(graph);
 
   if (keys.length === 0) {
-    return result;
+    return [];
   }
 
   const queue = new Queue();
   queue.enqueue(source);
 
-  return result;
+  while (!queue.isEmpty()) {
+    const node = queue.dequeue() as never;
+    result.add(node);
+
+    graph[node].forEach((neighbor) => {
+      if (result.has(neighbor)) {
+        return;
+      }
+      queue.enqueue(neighbor);
+    });
+  }
+
+  return Array.from(result) as [string];
 };
 
 /*  Auxiliary classes */
