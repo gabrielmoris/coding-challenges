@@ -1,5 +1,9 @@
 # Depth-first Search
 
+DFS is a graph traversal algorithm that starts at a root node and explores as far as possible along each branch before backtracking. This means it delves deeply into a branch until it reaches a dead end (no unvisited neighbors) and then returns to explore a neighbor of the previous node.
+
+![alt text](./image.png)
+
 Write a function that implements the depth-first search algorithm on a directed graph (in adjacency list format), given a starting node.
 
 Examples

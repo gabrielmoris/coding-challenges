@@ -11,6 +11,13 @@ export default function depthFirstSearch(
   graph: Record<string, Array<string>>,
   source: string
 ): Array<string> {
-  console.log("HERE", graph, source);
+  if (Object.keys(graph).length === 0) {
+    return [];
+  }
+
+  let result = new Set();
+  let notVisited = [graph];
+
   return [""];
 }
+// ['A', 'B', 'E', 'D', 'I', 'J', 'F', 'C', 'G', 'H']
