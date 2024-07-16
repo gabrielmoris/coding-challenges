@@ -59,3 +59,99 @@ Depth-first search (DFS) is an algorithm used for traversing a graph or a tree. 
 - Return the set of visited nodes.
 
 ## Solution
+
+**Clarification Questions**
+If unspecified:
+
+- Order of traversal: Should we use a standard pre-order traversal or other orders of traversal?
+- Input format: What is the format of the input data? Can we assume the input will be an adjacency list in the form of a JavaScript Object where keys are nodes and values are child nodes?
+- Output format: How should the output be formatted? Are there specific requirements or can we return an array with elements in the order of traversal?
+- Disconnected graphs: Do we have to consider or handle the case for disconnected graphs where there are multiple subgraphs that are not connected to each other?
+
+```typescript
+export default function depthFirstSearch(
+  graph: Record<string, Array<string>>,
+  source: string
+): Array<string> {
+  // If there are no nodes in the graph, just return an empty array
+  if (Object.keys(graph).length === 0) {
+    return [];
+  }
+
+  // Create an stack to store the nodes to be visited. We can simulate
+  // stacks using arrays in JavaScript.
+  // Add the root node since we're doing a pre-order DFS.
+  const toBeVisited: Array<string> = [];
+  toBeVisited.push(source);
+
+  // Initialize a set that tracks visited nodes.
+  const visited = new Set<string>();
+
+  // Loop as long as array is empty (i.e. there are still nodes to be visited).
+  while (toBeVisited.length !== 0) {
+    // Pop top node from array (toBeVisited) and add it to the set (visited).
+    const node = toBeVisited.pop()!;
+    visited.add(node);
+
+    // Retrieve neighbors (values of the adjacency list input Object)
+    const neighbors = graph[node];
+    // Push neighbors, in reverse order, onto array to be visited
+    // to preserve original order of neighbors when visiting (popping off the array).
+    for (let i = neighbors.length - 1; i >= 0; i--) {
+      const neighbor = neighbors[i];
+      // First check if the neighbor has already been visited before adding it.
+      if (!visited.has(neighbor)) {
+        toBeVisited.push(neighbor);
+      }
+    }
+  }
+
+  // The visited nodes is the traversal order.
+  return Array.from(visited);
+}
+```
+
+We can also perform DFS recursively, which is can be more intuitive in certain cases. The recursion call stack is an implicit stack to track which nodes to visit next.
+
+```javascript
+/**
+ * @param {Object} graph Node to array of neighboring nodes.
+ * @param {string} source Source node to start traversal from. Has to be a valid node if graph is non-empty.
+ * @return {string[]} A DFS-traversed order of nodes.
+ */
+export default function depthFirstSearch(graph, source) {
+  // If there are no nodes in the graph, just return an empty array
+  if (Object.keys(graph).length === 0) {
+    return [];
+  }
+
+  // Initialize a set that tracks visited nodes.
+  const visited = new Set();
+
+  function traverse(node) {
+    // Visited before, we can ignore.
+    if (visited.has(node)) {
+      return;
+    }
+
+    visited.add(node);
+    // Recursively visit each neighbor.
+    graph[node].forEach((neighbor) => {
+      traverse(neighbor);
+    });
+  }
+
+  // Start traversing from the source.
+  traverse(source);
+
+  // The visited nodes is the traversal order.
+  return Array.from(visited);
+}
+```
+
+**Edge Cases**
+
+- Empty graphs: Return an empty array without crashing.
+- Graphs with only one-two nodes: Traverse without crashing.
+- Cyclic graphs: Make sure not to traverse visited nodes again.
+- Disjoint graphs: Doesn't require special handling but good to be aware of.

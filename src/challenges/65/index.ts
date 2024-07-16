@@ -7,7 +7,10 @@ console.log(
   `,
   "\x1b[0m"
 );
-export default function depthFirstSearch(graphArg: { default: { [key: string]: string } }, sourceArg: { default: string }): Array<string> {
+export default function depthFirstSearch(
+  graphArg: { default: { [key: string]: string } },
+  sourceArg: { default: string }
+): Array<string> {
   const graph: { [key: string]: string } = graphArg.default;
   const source: string = sourceArg.default;
   if (Object.keys(graph).length === 0) {
@@ -17,18 +20,19 @@ export default function depthFirstSearch(graphArg: { default: { [key: string]: s
   let result = new Set();
   let notVisited = [source];
 
-  while (notVisited.length !== 0) {
+  while (notVisited.length) {
     const visiting = notVisited.pop();
     result.add(visiting);
 
     if (visiting != undefined) {
-      const linkedNodes: [string] = graph[visiting] as [string];
+      const linkedNodes: [string] = graph[visiting] as unknown as [string];
 
-      linkedNodes.forEach((node) => {
+      for (let i = linkedNodes.length - 1; i >= 0; i--) {
+        const node = linkedNodes[i];
         if (!result.has(node)) {
-          result.add(node);
+          notVisited.push(node);
         }
-      });
+      }
     }
   }
 
