@@ -22,15 +22,18 @@ export default function depthFirstSearch(
 
   while (notVisited.length) {
     const visiting = notVisited.pop();
+    // console.log("ADDING TO RESULT: ", visiting);
     result.add(visiting);
 
     if (visiting != undefined) {
       const linkedNodes: [string] = graph[visiting] as unknown as [string];
+      // console.log("TO VISIT: ", notVisited);
 
       for (let i = linkedNodes.length - 1; i >= 0; i--) {
         const node = linkedNodes[i];
         if (!result.has(node)) {
           notVisited.push(node);
+          // console.log("PUSHING TO NOTVISITED:", node);
         }
       }
     }
