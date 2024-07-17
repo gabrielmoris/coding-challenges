@@ -16,23 +16,29 @@ export default function heapSort(arrArg: {
   const arr = arrArg.default;
   const sizeOfParent = arr.length;
 
+  /*Convert into a MAx-heap structure [ 11, 3, 9, 2, 1, 6 ]
+         11
+       /    \
+      3      9
+     / \    /
+    2   1  6
+*/
   for (let i = Math.floor(sizeOfParent / 2 - 1); i >= 0; i--) {
     heapify(arr, sizeOfParent, i);
   }
 
+  // Extracting Sorted Elements
   for (let i = sizeOfParent - 1; i >= 0; i--) {
+    // The Biggest number is swapped to the end
     [arr[0], arr[i]] = [arr[i], arr[0]];
+    // Heaps again with reduced size to ensure the rest elements follow the max-heap property
     heapify(arr, i);
   }
 
   return arr;
 }
 
-/* Function to Heapify
-        20
-       /  \
-      11  10
-*/
+// Function to Heapify
 
 function heapify(arr: number[], size: number, indexFromParent: number = 0) {
   let highest = indexFromParent;
