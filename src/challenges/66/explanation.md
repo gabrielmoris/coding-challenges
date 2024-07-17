@@ -22,17 +22,29 @@ To understand heap sort, we need to first understand the heap data structure:
 
 - Complete binary tree = All levels of the tree are completely filled. If the last level is partially filled, it is filled first from left to right.
 - Heaps are frequently implemented as arrays. We can use the following formula to compute the parent, left child and right child's indexes within the array representation of a heap:
-  - Left child idx = 2 \_ parentIdx + 1
-  - Right child idx = 2 \_ parentIdx + 2
-  -
-  - ![alt text](image-1.png)
-  -
+
+  - Left child idx = 2 \* parentIdx + 1
+  - Right child idx = 2 \* parentIdx + 2
+
+  ![alt text](image-1.png)
 
 ### How Heap Sort Works
 
 A heap sort essentially works by the following steps:
 
 ![alt text](image-2.png)
+
+**Example (Simplified):**
+
+Imagine the array is [1, 3, 2]. Here's how heapify might work:
+
+- First call: heapify(arr, size, parentIdx=0). This focuses on the sub-array [1, 3].
+
+Since 3 is larger than 1, no swapping is needed. The heap property holds for this sub-array ([3, 1]).
+
+- Second call (after placing the largest element at the end): heapify(arr, size-1, parentIdx=0). This focuses on the sub-array [3].
+
+Since there's only one element, it's already a valid heap (a single element is trivially a heap).
 
 **Time Complexity:** Heap sort has a time complexity of O(n log n) in both average and worst-case scenarios, making it efficient for sorting large datasets.
 In-place sorting: It sorts the data in-place, meaning it modifies the original list without requiring significant extra space.
