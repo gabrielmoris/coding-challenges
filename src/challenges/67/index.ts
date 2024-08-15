@@ -31,11 +31,38 @@ export default function createQueue() {
   console.log(queue.isEmpty()); // false
 }
 
+class Node<T> {
+  value: T | undefined;
+  next: Node<T> | null;
+  prev: Node<T> | null;
+
+  constructor(value?: T) {
+    this.value = value;
+    this.next = null;
+    this.prev = null;
+  }
+}
+
+/* 
+- Queues should be implemented with linked lists which are essentially a chain of connected nodes.
+- To simplify handling of linked list manipulation of empty queues, I make use of doubly-linked lists
+ (nodes have both prev and next pointers) and dummy/sentinel head/tail nodes.
+- With the usage of dummy nodes, the linked list will never be "empty" and I don't have to separately
+  handle the case of enqueuing into empty queues and dequeuing a queue with only one item.
+*/
+
 class Queue<T> {
-  private _queue;
+  _dummyHead: Node<T>;
+  _dummyTail: Node<T>;
+  _length: number;
 
   constructor() {
-    this._queue = new Array();
+    this._dummyHead = new Node<T>();
+    this._dummyTail = new Node<T>();
+    this._dummyHead.prev = this._dummyTail;
+    this._dummyTail.next = this._dummyHead;
+
+    this._length = 0;
   }
 
   /**
@@ -44,8 +71,20 @@ class Queue<T> {
    * @return {number} The new length of the queue.
    */
   enqueue(item: T): number {
-    this._queue.push(item);
-    return this._queue.length;
+    // prev ---> DUMMY TAIL ---> NEW NODE ----> Dummy HEAD--->next
+
+    // Create the Node
+    const nodeItem = new Node(item);
+    // Get the last node
+    const formerPrev = this._dummyTail.next; // In empty Queue this would be _dummyHead
+    formerPrev!.prev = nodeItem;
+
+    nodeItem.next = formerPrev;
+    nodeItem.prev = this._dummyTail;
+    this._dummyTail.next = nodeItem;
+
+    this._length++;
+    return this._length;
   }
 
   /**
@@ -53,9 +92,21 @@ class Queue<T> {
    * @return {T | undefined} The item at the front of the queue if it is not empty, `undefined` otherwise.
    */
   dequeue(): T | undefined {
-    if (this.isEmpty()) return undefined;
-    const frontItem = this._queue.shift();
-    return frontItem;
+    if (this.isEmpty()) {
+      return undefined;
+    }
+
+    // prev(null)<--dummyTail--->next(dequeued)--->next(dummyHead)--->next(null)
+    const dequeuedNode = this._dummyHead.prev;
+    const newFirstNode = dequeuedNode!.prev;
+    this._dummyHead.prev = newFirstNode;
+    newFirstNode!.next = this._dummyHead;
+
+    dequeuedNode!.prev = null;
+    dequeuedNode!.next = null;
+
+    this._length--;
+    return dequeuedNode!.value;
   }
 
   /**
@@ -63,7 +114,7 @@ class Queue<T> {
    * @return {boolean} `true` if the queue has no items, `false` otherwise.
    */
   isEmpty(): boolean {
-    return this._queue.length === 0;
+    return this._length === 0;
   }
 
   /**
@@ -71,7 +122,10 @@ class Queue<T> {
    * @return {T | undefined} The item at the front of the queue if it is not empty, `undefined` otherwise.
    */
   front(): T | undefined {
-    return this._queue[0];
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    return this._dummyHead.prev!.value;
   }
 
   /**
@@ -79,7 +133,10 @@ class Queue<T> {
    * @return {T | undefined} The item at the back of the queue if it is not empty, `undefined` otherwise.
    */
   back(): T | undefined {
-    return this._queue[this._queue.length - 1];
+    if (this.isEmpty()) {
+      return undefined;
+    }
+    return this._dummyTail.next!.value;
   }
 
   /**
@@ -87,6 +144,6 @@ class Queue<T> {
    * @return {number} The number of items in the queue.
    */
   length(): number {
-    return this._queue.length;
+    return this._length;
   }
 }
