@@ -17,6 +17,22 @@ export default function fnWrapper(arrArg: {
   return quickSort(arr);
 }
 
-const quickSort = (arr: Array<number>) => {
-  return arr;
+const quickSort = (arr: Array<number>): Array<number> => {
+  if (arr.length <= 1) {
+    return arr;
+  }
+
+  const pivot = arr[arr.length - 1];
+  const lower = [];
+  const higher = [];
+
+  for (let i = 0; i < arr.length - 1; i++) {
+    if (arr[i] < pivot) {
+      lower.push(arr[i]);
+    } else {
+      higher.push(arr[i]);
+    }
+  }
+
+  return [...quickSort(lower), pivot, ...quickSort(higher)];
 };
