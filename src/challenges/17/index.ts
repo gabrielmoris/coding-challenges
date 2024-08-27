@@ -14,7 +14,10 @@ console.log(
   "\x1b[0m"
 );
 // Funciona, pero debería buscar hacerlo en O1. Es posible?
-export const maxProfit = ({ string }: { string: string }, { anagram }: { anagram: string }): any => {
+export const anagramChecker = (
+  { string }: { string: string },
+  { anagram }: { anagram: string }
+): any => {
   // Much better performant solution
   const sortedS: string = string.split("").sort().join("");
   const sortedT: string = anagram.split("").sort().join("");

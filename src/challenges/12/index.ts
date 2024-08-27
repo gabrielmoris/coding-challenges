@@ -1,4 +1,3 @@
-import { SolutionFunction } from "../..";
 /**
  * Definition for singly-linked list.
  * class ListNode {
@@ -20,7 +19,7 @@ console.log(
   "\x1b[0m"
 );
 
-export const reverseList: SolutionFunction = ({ head }: any): any => {
+export const reverseList = ({ head }: any): any => {
   // First I sabe what is in head, I put the head in result putting next as null and saving next in a variable
   //Then I iterate asigning the next as head and puting it as the parent in result
   if (head === null || head.next === null) {

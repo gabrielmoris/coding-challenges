@@ -44,7 +44,7 @@ export const generate = ({ numRows }: { numRows: number }): number[][] => {
 
 // Other Option
 
-// export const generate: SolutionFunction = (arg: string[]): number[][] => {
+// export const generate = (arg: string[]): number[][] => {
 //   const numRows = Number(arg[0]);
 //   let result: number[][] = Array.from(Array(numRows), () => []);
 //   let p1 = 0,

@@ -10,7 +10,7 @@ console.log(
 );
 
 //More performant, recursive function
-export const missingNumber = ({ nums1 }: { nums1: number[] }) => {
+export const maxProfitStock = ({ nums1 }: { nums1: number[] }) => {
   const prices = nums1.map((item) => Number(item));
 
   let min = prices[0];
