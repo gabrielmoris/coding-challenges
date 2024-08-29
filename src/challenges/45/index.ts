@@ -25,7 +25,7 @@ export const reverseBits = ({ n }: { n: number }) => {
 
   // I add 0 at the begginning to make it be 32 bits
   while (bit.length < 32) {
-    console.log(bit);
+    // console.log(bit);
     bit = "0" + bit;
   }
 
