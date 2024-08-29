@@ -20,60 +20,48 @@ export default function fnWrapper(arrArg: {
 
 // CHALLENGE
 function topologicalSort(graph: Record<string, Array<string>>): Array<string> {
-  // store each node's incoming and outgoing edges
-  const nodes = new Map<string, { in: number; out: Set<string> }>();
-  // store nodes to be processed
-  const queue = new Queue<string>();
-  // Output order
-  const output = [];
+  const solution: string[] = [];
+  const nodes = new Map();
+  const queue = new Queue();
 
-  // Iterating over all the keys in the input graph object A,B,C,D,E,D
-  // add each key to the "nodes" Map object
-  // with properties "in" with value 0
-  // and "out" with the value of set of neighboring nodes.
-  Object.keys(graph).forEach((node) => {
-    nodes.set(node, { in: 0, out: new Set(graph[node]) });
-  });
+  // 1. Set the nodes
+  for (let key of Object.keys(graph)) {
+    nodes.set(key, { in: 0, out: new Set(graph[key]) });
+  }
 
-  // Set the Map with the correct `in` values.
-  // Iterating over all the keys in the input graph object,
-  // for each node increase the `in` property of its neighbor node by 1.
-  Object.keys(graph).forEach((node) => {
-    graph[node].forEach((neighbor) => {
-      // For Example: Map<A, { in: 2; out: Set<string> }
-      nodes.get(neighbor)!.in += 1;
-    });
-  });
+  // 2. Set the neighbours of the nodes
+  for (let key of Object.keys(graph)) {
+    for (let neighbor of graph[key]) {
+      nodes.get(neighbor).in += 1;
+    }
+  }
 
-  // Iterate over the nodes and add all the nodes with `in: 0` to the queue.
+  // 3. queue nodes whose in value is 0
   nodes.forEach((value, node) => {
     if (value.in === 0) {
       queue.enqueue(node);
     }
   });
 
-  // While queue is not empty.
+  // 4. dequeue
   while (queue.length()) {
-    // Dequeue a node from the front of the queue.
-    const node = queue.dequeue()!;
+    // Main node dequeue
+    const node = queue.dequeue() as string;
 
-    // For each neighbor of this dequeued node decrease its `in` property by 1,
-    // if the `in` becomes 0, enqueue the neighbor node.
-    nodes.get(node)?.out.forEach((neighbor) => {
-      nodes.get(neighbor)!.in -= 1;
-      if (nodes.get(neighbor)!.in === 0) {
+    // check if it has neighbours
+    nodes.get(node).out.forEach((neighbor: string) => {
+      nodes.get(neighbor).in -= 1;
+      if (nodes.get(neighbor).in === 0) {
         queue.enqueue(neighbor);
       }
     });
 
-    // Add the dequeued node to the output array.
-    output.push(node);
+    // push to solution the dequeued Node
+    solution.push(node);
   }
 
-  // Return topological-ordered array if it has the same length as
-  // the number of keys in the graph, otherwise there is a cycle
-  // and we return an empty array.
-  return output.length === Object.keys(graph).length ? output : [];
+  // If it is cyclic, it wouldn't have the same length
+  return Object.keys(graph).length === solution.length ? solution : [];
 }
 
 // `Queue` data structure is provided in case you want to use it.
