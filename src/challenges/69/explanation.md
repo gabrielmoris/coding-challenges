@@ -1,6 +1,8 @@
 # Merge Sort
 
-mplement a function that performs a recursive merge sort. The function should be recursive and takes in an array of integers. The output should be an array with the input sorted in ascending order.
+Implement a function that performs a recursive merge sort. The function should be recursive and takes in an array of integers. The output should be an array with the input sorted in ascending order.
+
+[Link to challenge](./index.ts)
 
 ![img1](image.png)
 

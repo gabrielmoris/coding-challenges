@@ -2,6 +2,8 @@
 
 Implement a function that performs binary search on an array of numbers. The function should take in a sorted array of integers and a target integer to find. It returns the index of the target element or -1, if the target element doesn't exist in the array.
 
+[Link to challenge](./index.ts)
+
 Examples
 
 ```typescript
@@ -38,7 +40,10 @@ If unspecified:
   Note: This question tackles a standard binary search which uses an iterative approach and assumes the array is already sorted. Refer to the 'Notes' section for other alternatives.
 
 ```typescript
-export default function binarySearch(arr: Array<number>, target: number): number {
+export default function binarySearch(
+  arr: Array<number>,
+  target: number
+): number {
   // Initialize the left and right indices of the array
   let left = 0;
   let right = arr.length - 1;

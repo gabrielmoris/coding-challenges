@@ -1,5 +1,7 @@
 # Stack
 
+[Link to challenge](./index.ts)
+
 Implement a stack data structure in JavaScript that contains the following operations:
 
 `new Stack()`: Creates an instance of a Stack class that doesn't contain any items. The constructor does not accept any arguments.

@@ -2,6 +2,8 @@
 
 Implement a function that performs a heap sort. The function should take in an array of integers and return an array with the integers sorted in ascending order. The input array is modified in-place.
 
+[Link to challenge](./index.ts)
+
 **Examples**
 
 ```javascript

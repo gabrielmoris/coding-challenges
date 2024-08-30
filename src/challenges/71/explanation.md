@@ -2,6 +2,8 @@
 
 Implement a function that performs a topological sort on a directed graph (in adjacency list format), where the keys represent nodes and values are an array of nodes that have an outgoing edge to the current node.
 
+[Link to challenge](./index.ts)
+
 **Examples**
 
 ```javascript

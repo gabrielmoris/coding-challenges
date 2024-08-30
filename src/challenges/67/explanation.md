@@ -10,6 +10,8 @@ front(): Returns the item at the front of the queue without removing it from the
 back(): Returns the item at the back of the queue without removing it from the queue. Required time complexity: O(1).
 length(): Returns the number of items in the queue. Required time complexity: O(1).
 
+[Link to challenge](./index.ts)
+
 **Examples**
 
 ```javascript

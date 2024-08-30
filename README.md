@@ -43,6 +43,18 @@ Just run `npm start` and the last challenge for the day will get executed. Follo
 - [42. Return the node at which two singly linked-lists intersect.](src/challenges/42/index.ts)
 - [43. Return the index of the first occurrence of needle in haystack.](src/challenges/43/index.ts)
 - [44. Return the square root of x rounded down to the nearest integer.](src/challenges/44/index.ts)
+- [46. Return true if it is a palindrome.](src/challenges/46/index.ts)
+- [47. Given an integer array nums, rotate the array to the right by k steps.](src/challenges/47/index.ts)
+- [48. Return the number of prime numbers that are strictly less than n.](src/challenges/48/index.ts)
+- [49. Given a signed 32-bit integer x, return x with its digits reversed.](src/challenges/49/index.ts)
+- [50. Given the root of a binary tree, return the inorder traversal of its nodes' values.](src/challenges/50/index.ts)
+- [52. Given a string s, find the length of the longest substring without repeating characters.](src/challenges/52/index.ts)
+- [56. There's a staircase with N steps, and you can climb 1 or 2 steps at a time. Give the nuber of firrerent ways to climb.](src/challenges/56/index.ts)
+- [57. Given intervals[i] = [starti, endi], merge all overlapping intervals.](src/challenges/57/index.ts)
+- [58. Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.](src/challenges/58/index.ts)
+- [60. Calcule if s can be segmented into a space-separated sequence of dictionary words.](src/challenges/60/explanation.md)
+- [62. Implement a stack data structure.](src/challenges/62/explanation.md)
+- [67. Implement a queue data structure.](src/challenges/67/explanation.md)
 
 ## Medium Challenges
 
@@ -53,7 +65,21 @@ Just run `npm start` and the last challenge for the day will get executed. Follo
 - [37. Determine if a Linked list has a cycle in it.](src/challenges/37/index.ts)
 - [38. Given the head of a singly linked list, return true if it is a palindrome.](src/challenges/38/index.ts)
 - [45. Reverse bits of a given 32 bits unsigned integer.](src/challenges/45/index.ts)
+- [51. Add the twho linked list numbers and return the sum as a linked list.](src/challenges/51/index.ts)
+- [53. In an m x n 2D binary grid which represents a map of '1's (land) and '0's (water), return the number of islands.](src/challenges/53/index.ts)
+- [54. Given a string s, return the longest palindromic substring in s.](src/challenges/54/index.ts)
+- [55. Construct a deep copy of a linked list.](src/challenges/55/index.ts)
+- [59. compute how much water it can trap after raining.](src/challenges/59/explanation.md)
 
 ## Hard Challenges
 
 - [11. Given two integers a and b, return the sum of the two integers without using the operators + and -.](src/challenges/11/index.ts)
+- [61. Write a function that implements the breadth-first search (BFS) algorithm on a directed graph.](src/challenges/61/explanation.md)
+- [63. Implement a function that performs an insertion sort.](src/challenges/63/explanation.md)
+- [64. Implement a function that performs binary search on an array of numbers.](src/challenges/64/explanation.md)
+- [65. Write a function that implements the depth-first search algorithm on a directed graph.](src/challenges/65/explanation.md)
+- [66. Implement a function that performs a heap sort.](src/challenges/66/explanation.md)
+- [68. Implement an EventEmitter class similar to the one in Node.js that follows such an observer pattern.](src/challenges/68/explanation.md)
+- [69. Implement a function that performs a recursive merge sort.](src/challenges/69/explanation.md)
+- [70. Implement a function that performs a recursive quick sort.](src/challenges/70/explanation.md)
+- [71. Implement a function that performs a topological sort on a directed graph.](src/challenges/71/explanation.md)

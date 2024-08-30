@@ -2,9 +2,7 @@ console.log(
   "\x1b[44m",
   "\x1b[33m",
   `
-  Given a string s, find the length of the longest 
-substring
- without repeating characters.
+  Given a string s, find the length of the longest substring without repeating characters.
 
  
 

@@ -5,6 +5,8 @@ we can observe/subscribe to events emitted by publishers and execute code whenev
 
 Implement an EventEmitter class similar to the one in Node.js that follows such an observer pattern.
 
+[Link to challenge](./index.ts)
+
 **Examples**
 
 ```javascript

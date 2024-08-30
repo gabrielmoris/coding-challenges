@@ -1,3 +1,7 @@
+# Wordbreak
+
+[Link to challenge](./index.ts)
+
 The `wordBreak` function is a JavaScript function that takes two arguments: an object with a string `s` and an object with an array `wordDict`. It is designed to determine whether the input string `s` can be broken into words from the given `wordDict` array.
 
 Here's a step-by-step explanation of how the function works:

@@ -1,5 +1,7 @@
 # Explanation
 
+[Link to challenge](./index.ts)
+
 Imagine you have a bunch of little blocks, like building blocks, and they have different heights. These blocks represent the heights of something like hills or buildings. Some blocks are taller, and some are shorter.
 
 Now, you want to figure out how much rainwater can get trapped between these blocks if it rains. When it rains, the water can get caught between the blocks if there's a "pit" where the shorter blocks are surrounded by taller blocks on both sides.
