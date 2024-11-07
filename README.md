@@ -55,6 +55,7 @@ Just run `npm start` and the last challenge for the day will get executed. Follo
 - [60. Calcule if s can be segmented into a space-separated sequence of dictionary words.](src/challenges/60/explanation.md)
 - [62. Implement a stack data structure.](src/challenges/62/explanation.md)
 - [67. Implement a queue data structure.](src/challenges/67/explanation.md)
+- [72. Implement a function that merge 2 sorted arrays returning a sorted array.](src/challenges/72/explanation.md)
 
 ## Medium Challenges
 
